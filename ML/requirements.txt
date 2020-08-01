@@ -1,0 +1,13 @@
+bs4
+contractions
+joblib
+nltk
+numpy
+pandas
+pickle
+re
+scikit-plot
+sklearn
+spacy
+tensorflow
+unicodedata
