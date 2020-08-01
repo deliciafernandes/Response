@@ -1,0 +1,97 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block content %}
+<section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-8">
+                                             <h3>Stay updated! Stay safe!</h3>
+                                            
+                                             <h1>Pandemic</h1>
+                                            
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>      
+
+
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h3>How to prepare for pandemic:</h3>
+                                   <h2>BEFORE A PANDEMIC: PREPARE</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3 style="font-weight: 100;"><ul>
+                                       <li>Store supplies of food and water adequately for not more than 2 weeks (DO NOT HOARD)</li>
+                                       <li>Have any nonprescription drugs and other health supplies on hand, including pain relievers, stomach remedies, cough and cold medicines, fluids with electrolytes, and vitamins.</li>
+                                       <li>Get copies and maintain electronic versions of health records from doctors, hospitals, pharmacies and other sources and store them, for personal reference.</li>
+                                       <li>Talk with family members and loved ones about how they would be cared for if they got sick, or what will be needed to care for them in your home.</li>  
+                                       <li>Periodically check your regular prescription drugs to ensure a continuous supply in your home.</li>
+                                   </ul></h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{%static 'images/precautions/pand_pre1.jpg'%} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>   
+     
+     
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h4>How to prepare for pandemic:</h4>
+                                   <h2>DURING A PANDEMIC: SURVIVE</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3 style="font-weight: 100;"><ul>
+                                       <li>Limit the Spread of Germs and Prevent Infection</li>
+                                       <li>Americans can continue to use and drink tap water as usual during the COVID-19 pandemic.  Please be sure to follow public health guidance as the situation develops.</li>
+                                       <li>Avoid close contact with people who are sick.</li>
+                                       <li>When you are sick, keep your distance from others to protect them from getting sick too.</li>  
+                                       <li>Cover your mouth and nose with a tissue when coughing or sneezing. It may prevent those around you from getting sick.</li>
+                                       <li>Washing your hands often will help protect you from germs.</li>
+                                       <li>Avoid touching your eyes, nose or mouth.</li>
+                                       <li>Practice other good health habits. Get plenty of sleep, be physically active, manage your stress, drink plenty of fluids, and eat nutritious food.</li>
+                                   </ul></h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{% static 'images/precautions/pand_pre2.jpg' %} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>    
+
+{% endblock content %}
