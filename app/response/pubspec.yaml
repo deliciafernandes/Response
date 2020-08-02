@@ -69,6 +69,10 @@ flutter:
       fonts:
         - asset: assets/fonts/Lora-Regular.ttf
 
+    - family: Anton-Regular
+      fonts:
+        - asset: assets/fonts/Anton-Regular.ttf
+
     - family: PlayfairDisplay-Bold
       fonts:
         - asset: assets/fonts/PlayfairDisplay-Bold.ttf
@@ -101,5 +105,9 @@ flutter:
     - family: HeartIcon
       fonts:
         - asset: assets/fonts/HeartIcon.ttf
+
+    - family: Emergency
+      fonts:
+        - asset: assets/fonts/Emergency.ttf
 
 

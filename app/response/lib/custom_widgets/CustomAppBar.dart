@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:response/custom_icons/emergency_icons.dart';
+import 'package:response/screens/SOS.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,8 +10,6 @@ class CustomAppBar extends StatefulWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-//  final _drawerController = ZoomDrawerController();
-
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -18,6 +18,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       height: 667.0,
       allowFontScaling: true,
     );
+
     return SafeArea(
       top: true,
       bottom: false,
@@ -26,30 +27,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-//          ZoomDrawer(
-//            controller: _drawerController,
-//            menuScreen: CustomAppBar(),
-//            mainScreen: DetailedNewsPage(),
-//            borderRadius: 24.0,
-//            showShadow: true,
-//            angle: 0.0,
-//            backgroundColor: Colors.grey[300],
-//            slideWidth: MediaQuery.of(context).size.width *
-//                (ZoomDrawer.isRTL() ? .45 : 0.65),
-//          ),
           IconButton(
             icon: Icon(Icons.menu, size: 20.0.w, color: Colors.black),
-            onPressed: () {
-//              _drawerController.open();
-            },
+            onPressed: () {},
           ),
           Text(
             'RESPONSE',
             style: kCustomAppBarResponseLogoTextStyle,
           ),
           IconButton(
-            icon: Icon(Icons.settings, size: 20.0.w, color: Colors.black),
-            onPressed: () {},
+            icon: Icon(Emergency.warning, size: 20.0.w, color: Colors.black),
+            onPressed: () {
+              Navigator.pushNamed(context, SOS.id);
+            },
           ),
         ],
       ),
