@@ -18,7 +18,8 @@ urlpatterns = [
     path('pandemic/',views.pandemic, name='pandemic'),
     path('violence/',views.violence, name='violence'),
     path('first-aid/',views.first_aid, name='first-aid'),
-    path("subscribe/", views.subscribe, name="subscribe"),
+    path('relief/',views.Relief_help, name='rel-help'),
+    # path("subscribe/", views.subscribe, name="subscribe"),
     path('email/',views.test_email,name='test_email')
     # path('api/',include(router.urls)),
 ]

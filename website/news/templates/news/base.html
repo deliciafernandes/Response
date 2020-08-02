@@ -275,6 +275,96 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
 </div>
      <!-- HOME -->
      {% block content %}
+     <!-- HOME -->
+     <section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-8">
+                                             <h3>Disaster management and Emergency precautions!</h3>
+                                            
+                                             <h1>Stay updated! Stay safe! 
+                                        
+                                                  
+                                        <!--SOS button   -->
+                                        <br>
+                                        <div class="dropdown">
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb">SOS-Ambulance</button>
+                                           </div>
+
+                                           <div class="dropdown ">
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#sos">SOS-First-Aid</button>
+                                             <div class="dropdown-content">
+                                           </div>
+
+                                         <!-- SOS  ends here-->
+                                             </h1>
+                                            
+                                        </div>
+                                            <div class="col-md-2 col-sm-2">
+                                             
+                                             <a href="#" target="_blank"  data-toggle="modal" data-target="#aid" class="section-btn btn btn-default smoothScroll">First - Aid Steps . </a><br>
+                                             <a href="#mapp" class="header section-btn btn btn-default smoothScroll" >Healthcare Centers </a><br>
+                                             <a href="#prec" class="header section-btn btn btn-default smoothScroll" >Precautionary Steps</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>
+     <!-- Ambulance Modal -->
+<div class="modal fade" id="amb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Confirmation Box </h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+                      Confirm Sending the message: <br> <br> 
+                    <input type="text" placeholder="Your Name" name = "name"> <br> <br>
+                    <input type="text " placeholder="Disaster Type" name = "distype"> <br> <br>
+
+                      <a href="#" class="btn btn-primary">SEND</a>
+                      <a href="#" class="btn btn-primary">CANCEL</a>      
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+     
+
+<!-- FIRST AID Modal -->
+<div class="modal fade" id="sos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Confirmation Box </h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+                      Confirm Sending the message: <br> <br> 
+
+                    <input type="text" placeholder="Your Name"> <br> <br>
+                    <input type="text " placeholder="Injury type"> <br> <br>
+
+                      <a href="#" class="btn btn-primary">SEND</a>
+                      <a href="#" class="btn btn-primary">CANCEL</a>      
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
      <section id="home" class="slider" data-stellar-background-ratio="0.5">
           <div class="row">
 
@@ -401,15 +491,17 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
 
                                                   <li> 
                                                        <div class="col-md-4">
-                                                             {% comment %} <img src="{{r.imageurl}}" alt="loading..." class="newsi">   {% endcomment %}
+                                                             <img src="{{value.image_url}}" alt="loading..." class="newsi">
                                                         </div>
                                                         <div class="col-md-8">
-                                                             <span>{{value.date}}</span><a href="#">  <br>{{value.headline}}</a>
-                                                             {% comment %} <a href="https://www.facebook.com/sharer/sharer.php?u=http://CodingForEntrepreneurs.com/">Facebook</a> {% endcomment %}
+                                                             <span>{{value.date}}</span><a href="#" data-toggle="modal" data-target="#news1">  <br>{{value.headline}}</a>
+                                                              <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">Facebook</a> 
+                                                              <a href="https://twitter.com/home?status={{value.share_string}}%20http://codingforentrepreneurs.com/">Twitter</a>
+                                                              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}/&title={{value.headline}}&summary={{value.share_link}}">Linkedin</a>
                                                         </div> <br>
                                                    </li>
-                                                   {% endfor %}
-                                                   {% endfor %}
+                                                  {%endfor%}
+                                                  {%endfor%}     
                                              
                                                   
                                                   </ul>
@@ -420,6 +512,40 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
 
                 </div>
      </section>          
+<div class="modal fade" id="news1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 13%;">
+              <div class="modal-content" >
+                  <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Description</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div cCorona virus invadinlass="modal-body"> 
+                       <span> mad gay</span>
+                       <h5>big gay</h5>
+                       <p>gay</p>
+                       <a href="#" data-toggle="modal" data-target="#share"><img src="{% static 'news/images/share.jpg' %}" alt="loading.." class="m-img">     </a>   
+                       <a href="base.html#donate" class="btn btn-default">Donate</a>
+                       <a href="" target="_blank" class="btn btn-default">Precautions</a>
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+     <!-- Share News-Description Modal -->
+     <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 27%; width: 11%; ">
+              <div class="modal-content" >
+                  <div class="modal-body"> 
+                       <a href="#"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="loading.." class="mm-img">     </a>   
+                       <a href="#"><img src="{% static 'news/images/reddit.jpeg' %} " alt="loading.." class="mm-img">     </a>   
+                       <a href="#"><img src="{% static 'news/images/fb.jpeg' %} " alt="loading.." class="mm-img">     </a>   
+                       <a href="#"><img src="{% static 'news/images/twitter.png' %} " alt="loading.." class="mm-img">     </a>   
+                      </div>  
+                  </div>
+              </div>
+          </div>
 
  <!-- News JS -->
      <script>
