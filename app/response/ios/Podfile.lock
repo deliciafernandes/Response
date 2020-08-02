@@ -222,8 +222,6 @@ PODS:
     - Firebase/Core
     - Firebase/Firestore (~> 6.0)
     - Flutter
-  - contacts_service (0.2.2):
-    - Flutter
   - Firebase/Auth (6.27.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.6.0)
@@ -283,8 +281,6 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
-  - flutter_sms (1.1.0):
-    - Flutter
   - geocoder (0.0.1):
     - Flutter
   - "geolocator (5.3.2+2)":
@@ -351,8 +347,6 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
-  - "permission_handler (5.0.1+1)":
-    - Flutter
   - PromisesObjC (1.2.9)
   - share (0.0.1):
     - Flutter
@@ -361,15 +355,12 @@ PODS:
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
-  - contacts_service (from `.symlinks/plugins/contacts_service/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
-  - flutter_sms (from `.symlinks/plugins/flutter_sms/ios`)
   - geocoder (from `.symlinks/plugins/geocoder/ios`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
   - location_permissions (from `.symlinks/plugins/location_permissions/ios`)
-  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - share (from `.symlinks/plugins/share/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
@@ -398,24 +389,18 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
-  contacts_service:
-    :path: ".symlinks/plugins/contacts_service/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
-  flutter_sms:
-    :path: ".symlinks/plugins/flutter_sms/ios"
   geocoder:
     :path: ".symlinks/plugins/geocoder/ios"
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
   location_permissions:
     :path: ".symlinks/plugins/location_permissions/ios"
-  permission_handler:
-    :path: ".symlinks/plugins/permission_handler/ios"
   share:
     :path: ".symlinks/plugins/share/ios"
   url_launcher:
@@ -425,7 +410,6 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   cloud_firestore: 2a4f8f802fb0b701cf809b283b6bec7477ebaa6f
-  contacts_service: 849e1f84281804c8bfbec1b4c3eedcb23c5d3eca
   Firebase: 919186c8e119dd9372a45fd1dd17a8a942bc1892
   firebase_auth: af8784c4d8d87c36f730a305f97bfbcb24db024b
   firebase_core: 335c02abd48672b7c83c683df833d0488a72e73e
@@ -436,7 +420,6 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 4291ab811ad323a2b807a4a481cd5df2e445a676
   FirebaseInstallations: 293f567159b6d66d1c990f13bb868066096c94ec
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_sms: 91ce41530f55c85d6524d82307a5d555844c086a
   geocoder: 3cfab70531a0b367e917bafe82df4c30f6d4c45a
   geolocator: f7622e0e7e2a24718285b73916d60c4a54b9f5b6
   GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
@@ -449,7 +432,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   location_permissions: 7e0f9aa0f60deb8ff93ddf0e2a164c7e8197bc94
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  permission_handler: eac8e15b4a1a3fba55b761d19f3f4e6b005d15b6
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef

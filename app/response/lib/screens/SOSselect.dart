@@ -39,7 +39,7 @@ class SOSselect extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: ScreenUtil().setWidth(15.0),
+            vertical: ScreenUtil().setWidth(20.0),
             horizontal: ScreenUtil().setHeight(20.0)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
