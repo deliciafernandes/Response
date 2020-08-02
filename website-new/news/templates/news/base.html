@@ -1,0 +1,965 @@
+{%load static%}
+ <!DOCTYPE html>
+<html lang="en">
+<head> 
+
+     <title>Disaster Management: SEM_ALPHA</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     
+     <link rel="stylesheet" href="{% static 'news/css/bootstrap.min.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/font-awesome.min.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/animate.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/owl.carousel.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/owl.theme.default.min.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/magnific-popup.css'%}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'news/css/template-style.css'%}">
+     
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4nyMP_pwA&callback=initMap&libraries=places">
+</script>
+     
+<!-- MAP MIAN SCRIPT -->
+<script>
+
+     // THIS IS THE ONE FOR FETCHING LONGITUDE AND LATITUDE 
+     
+          navigator.geolocation.getCurrentPosition(function(position) {
+                    var lon=position.coords.longitude;
+                    var lat=position.coords.latitude;
+                    // alert(lon);
+                    document.getElementById("lon").value = lon;
+                    document.getElementById("lat").value = lat;  
+                    });
+          
+     
+     
+     
+     // THIS IS THE TO DISPLAY LOCATIONS.
+     (function(exports) {
+               // "use strict";
+                    function initMap() {
+          
+               
+
+                    var lat=Number(document.getElementById("lat").value);
+                    var lon=Number(document.getElementById("lon").value);
+      
+     
+                    var sydney = new google.maps.LatLng(lat, lon);
+                    exports.infowindow = new google.maps.InfoWindow();
+                    exports.map = new google.maps.Map(document.getElementById("map"), {
+                    center: sydney,
+                    zoom: 15
+                    });
+                    var request = {
+                    location: sydney,
+                    radius: '2000',
+               type: ['hospital']
+                    };
+                    exports.service = new google.maps.places.PlacesService(exports.map);
+                    exports.service.nearbySearch(request, function(
+                    results,
+                    status
+                    ) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                         createMarker(results[i]);
+                    }
+          
+                    exports.map.setCenter(results[0].geometry.location);
+                    }
+                    });
+             }
+     
+     function createMarker(place) {
+               var marker = new google.maps.Marker({
+               map: exports.map,
+               position: place.geometry.location
+               });
+               google.maps.event.addListener(marker, "click", function() {
+               exports.infowindow.setContent(place.name);
+               exports.infowindow.open(exports.map, this);
+               });
+               }
+     
+             exports.createMarker = createMarker;
+             exports.initMap = initMap;
+           })((this.window = this.window || {}));
+     
+     
+     
+     
+</script>
+
+
+</head>
+<body >
+
+
+    
+    
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="base.html" class="navbar-brand">Disaster<span>.</span> Management</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse" style="width: 110%;">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <li><a href="#home" class="smoothScroll">Home</a></li>
+                         <li><a href="#about" class="smoothScroll">About</a></li>
+                         <li><a href="#news" class="smoothScroll">Alert</a></li>
+                         <li><a href="#contact" class="smoothScroll">Contact</a></li>
+                         <li><a href="#" class="red smoothScroll " style="color: rgb(211, 44, 44);"  data-toggle="modal" data-target="#donate" >Donate</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="tel:108">Emergency DIAL:  <i class="fa fa-phone"></i>  108</a></li>
+                        
+                          <a href="#" class="section-btn" data-toggle="modal" data-target="#exampleModal1">Login </a>
+                        
+                          <a href="#" class="section-btn" data-toggle="modal" data-target="#exampleModal"> Register</a>
+                    </ul>
+               </div>
+
+          </div>
+           <!-- language ---------------------->
+           <div id="google_translate_element"></div>
+
+           <script type="text/javascript">
+           function googleTranslateElementInit() {
+           new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+           }
+           </script>
+
+       <!-- language --------------------->
+     </section>
+
+
+<!--MODAL FOR DONATE -->
+<div class="modal fade" id="donate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Donate</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">        	
+          <p style="font-weight: 600; color: black;">    Donate at the UPI : <span style="color: red ;">pmcares@oksbi </span> </p>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+     
+      
+<!--MODAL FOR LOGIN-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Admin Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">        	
+   <form >
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer01">Admin Name</label>
+      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="User Name"  required name="user_name">
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationServer02">Password</label>
+      <input type="password" class="form-control is-valid" id="validationServer02" placeholder="Password"  required name="password">
+    </div>
+  </div>
+  <button class="section-btn" type="submit" name="submit" style="margin-top: 20px; margin-left: 30px;" >Login</button>
+</form> 
+      </div>
+     
+    </div>
+  </div>
+</div>
+   
+  <!--MODAL FOR Signup-->
+    <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+   <div class="modal-dialog" role="document">
+    <div class="modal-content"  >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">SignUp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 300px">        	
+ <form  style="padding-left: 2%;" method = "POST" action ='/'>
+  {% csrf_token %}       
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+    {% for i,j in context2.items %}
+    
+      <label for="validationServer01">Name</label>
+     {{j.name}} 
+    </div>
+    <div class="form-row">
+     <div class="col-md-6 mb-3">
+       <label for="validationServer03">Contact:</label>
+       {{j.contact}} 
+     </div>
+    <div class="col-md-5 mb-6" style="margin-top:2%;">
+      <label for="validationServerUsername">Email</label>
+      <div class="input-group">
+        {{j.email}}
+      </div>
+
+  {% endfor %}
+    </div>
+  <button class="section-btn col-md-4 mb-3" type="submit" name="submit" style=" margin-left: 50px;" >Sign up</button>
+
+  </div>
+
+  
+
+   
+  </div>
+
+
+  
+</form>
+             
+      </div>
+     
+    </div>
+  </div>
+</div>
+     <!-- HOME -->
+     {% block content %}
+     <!-- HOME -->
+     <section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-8">
+                                             <h3>Disaster management and Emergency precautions!</h3>
+                                            
+                                             <h1>Stay updated! Stay safe! 
+                                        
+                                                  
+                                        <!--SOS button   -->
+                                        <br>
+                                        <div class="dropdown">
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb"   >SOS-Ambulance</button>
+                                           </div>
+
+                                           <div class="dropdown ">
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#sos">SOS-First-Aid</button>
+                                             
+                                           </div>
+
+                                         <!-- SOS  ends here-->
+                                             </h1>
+                                            
+                                        </div>
+                                            <div class="col-md-2 col-sm-2">
+                                             
+                                             <a href="#" target="_blank"  data-toggle="modal" data-target="#aid" class="section-btn btn btn-default smoothScroll">First - Aid Steps . </a><br>
+                                             <a href="#mapp" class="header section-btn btn btn-default smoothScroll" >Healthcare Centers </a><br>
+                                             <a href="#prec" class="header section-btn btn btn-default smoothScroll" >Precautionary Steps</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>
+
+
+<!-- chatbot ----------------------------------------------------------->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"> </script>
+     <df-messenger
+       intent="WELCOME"
+       chat-title="Response"
+       agent-id="b9478ac3-83a8-4045-994e-cc519a59eae8"
+       language-code="en"
+     ></df-messenger>
+<!-- ------------------------------------------------------------------->
+     
+     <!-- Ambulance Modal -->
+<div class="modal fade" id="amb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Confirmation Box </h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+                      Confirm Sending the message: <br> <br> 
+                      <form>
+
+                        <input id="name_user" type="text" placeholder="Your Name" name = "name" class="field" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+                    <input id="distype" type="text " placeholder="Disaster Type" name = "distype" class="field" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+
+                    <button href="#" onclick="getLocation()" class="btn btn-primary" >SOS</button>  
+                      <a href="#" class="btn btn-primary">CANCEL</a>
+
+                        </form>
+
+                          
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+
+
+<script>
+
+                  function httpGet(theUrl)
+                  {
+                      var xmlHttp = new XMLHttpRequest();
+                      xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                      xmlHttp.send( null );
+                      return xmlHttp.responseText;
+                  }
+
+                  // var x = document.getElementById("demo");
+
+                  function getLocation() {
+                    if (navigator.geolocation) {
+                      navigator.geolocation.getCurrentPosition(showPosition);
+                    } else { 
+                      // x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+                  function showPosition(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=4bf58dd8d48988d196941735&sortByDistance=1";
+
+                    
+                    var response = httpGet(url);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+                    console.log(obj.response.venues[0].name);
+
+                    var hospital= obj.response.venues[0].name;
+            
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user").value;
+
+                    var message = "Alert has been been sent to " + hospital+ " for user " + name;
+                    
+
+                    alert(message) ;
+              
+
+                    
+                    var URL = "{% url 'rel-help' %}";
+
+                    var data = {'name': name,'hospital': hospital, 'contact': contact, 'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+     
+<!-- FIRST AID Modal -->
+<div class="modal fade" id="sos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Confirmation Box </h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+
+
+                      Confirm Sending the message: <br> <br> 
+
+                    <form>
+
+                        <input id="name_user2" type="text" placeholder="Your Name" name = "name" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+                    <input id="intype" type="text " placeholder="Injury Type" name = "distype" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+
+                    <button href="#" class="btn btn-primary" onclick="getLocation2()">SOS</button>
+
+                      <button href="#" class="btn btn-primary">CANCEL</button>
+
+                        </form>
+
+                          
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+
+<script>
+
+                  // function httpGet(theUrl)
+                  // {
+                  //     var xmlHttp = new XMLHttpRequest();
+                  //     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                  //     xmlHttp.send( null );
+                  //     return xmlHttp.responseText;
+                  // }
+
+                  // var x = document.getElementById("demo");
+
+                  function getLocation2() {
+                    if (navigator.geolocation) {
+                      // print('hi');
+                      navigator.geolocation.getCurrentPosition(showPosition2);
+                    } else { 
+                       x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+
+
+                  function showPosition2(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=50328a8e91d4c4b30a586d6c&sortByDistance=1";
+
+                    var response = httpGet(url);
+                    alert(response);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+
+                    var ngo = obj.response.venues[0].name;
+    
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user2").value;
+
+                    var injury = document.getElementById("intype").value;
+
+                    var message = "Alert has been been sent to " + ngo+ " for user " + name;
+
+              
+                    
+                    var URL = "{% url 'rel-help2' %}";
+
+                    var data = {'name': name,'ngo': ngo, 'contact': contact, 'injury':injury,'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+
+
+
+
+      <!-- News -->
+  
+      <section id="contact news" data-stellar-background-ratio="0.1" style="padding: 40px;">
+          <div class="container wow fadeInUp"  data-wow-delay="0.1s"  style="padding: 0px;">
+               <div class=" col-md-6">
+                    <h2 id="news">Ministry News</h2>
+                          <div class="holder">
+                         <ul id="ticker01">
+                                                            <li> 
+                                                                <div class="col-md-4">
+                                                                      <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                 </div>
+                                                                 <div class="col-md-8">
+                                                                      <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                 </div> <br>
+                                                            </li>
+
+                                                            <li> 
+                                                                 <div class="col-md-4">
+                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                  </div>
+                                                                  <div class="col-md-8">
+                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                  </div> <br>
+                                                             </li>
+
+                                                             <li> 
+                                                                 <div class="col-md-4">
+                                                                       <img src="{%static 'news/images/wildfires.jpg'%}
+                                                                       " alt="loading..." class="newsi">  
+                                                                  </div>
+                                                                  <div class="col-md-8">
+                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                  </div> <br>
+                                                             </li>
+
+                                                             <li> 
+                                                                 <div class="col-md-4">
+                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                  </div>
+                                                                  <div class="col-md-8">
+                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                  </div> <br>
+                                                             </li>
+
+                                                             <li> 
+                                                                 <div class="col-md-4">
+                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                  </div>
+                                                                  <div class="col-md-8">
+                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                  </div> <br>
+                                                             </li>
+
+                                                             <li> 
+                                                                 <div class="col-md-4">
+                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                  </div>
+                                                                  <div class="col-md-8">
+                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                  </div> <br>
+                                                             </li>
+
+                                                             <li> 
+                                                                 <div class="col-md-4">
+                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                  </div>
+                                                                  <div class="col-md-8">
+                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                  </div> <br>
+                                                             </li>
+                              </ul>
+                       </div>
+
+               </div>
+               <div class=" col-md-1"> </div>
+               <div class=" col-md-6" >
+                    <h2 id="news">National News</h2>
+                    
+                    
+                                        <div class="holder">
+                                             <ul id="ticker01">
+                                             {% for i,r in context1.items %}
+                                   
+                                             {% for  key,value in r.iterrows  %}
+                                             
+
+                                                  <li style="height: 70px;"> 
+                                                       <div class="col-md-4">
+                                                             <img src="{{value.image_url}}" alt="loading..." class="newsi">
+                                                        </div>
+                                                        <div class="col-md-8" style="font-size: small;">
+                                                             <span>{{value.date}}</span><a href="#" data-toggle="modal" data-target="#news1">  <br>{{value.headline}}</a> <br>
+                                                              <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">  <img src="{% static 'news/images/fb.jpeg' %}" alt="" class="mm-img" style="width: 20px;"> </a> 
+                                                              <a href="https://twitter.com/home?status={{value.share_string}}%20http://codingforentrepreneurs.com/"><img src="{% static 'news/images/twitter.png' %}" alt="" class="mm-img" style="width: 20px;"></a>
+                                                              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}/&title={{value.headline}}&summary={{value.share_link}}"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="" class="mm-img" style="width: 20px;"></a>
+                                                        </div> <br>
+                                                   </li>
+                                                  {%endfor%}
+                                                  {%endfor%}     
+                                             
+                                                  
+                                                  </ul>
+                                           </div>
+                    
+                                   </div>
+
+
+                </div>
+     </section>          
+<div class="modal fade" id="news1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 13%;">
+              <div class="modal-content" >
+                  <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Description</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div cCorona virus invadinlass="modal-body" style="padding: 3%;"> 
+                       <span> mad gay</span>
+                       <h5>big gay</h5>
+                       <p>gay</p>
+                       <a href="#" data-toggle="modal" data-target="#share"><img src="{% static 'news/images/share.jpg' %}" alt="loading.." class="m-img">     </a>   
+                       <a href="base.html#donate" class="btn btn-default">Donate</a>
+                       <a href="" target="_blank" class="btn btn-default">Precautions</a>
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+     <!-- Share News-Description Modal -->
+     <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 27%; width: 11%; ">
+              <div class="modal-content" >
+                  <div class="modal-body"> 
+                       <a href="#"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/reddit.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/fb.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/twitter.png' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+ <!-- News JS -->
+     <script>
+          jQuery.fn.liScroll = function(settings) {
+	     settings = jQuery.extend({
+		travelocity: 0.03
+		}, settings);		
+		return this.each(function(){
+				var $strip = jQuery(this);
+				$strip.addClass("newsticker")
+				var stripHeight = 1;
+				$strip.find("li").each(function(i){
+					stripHeight += jQuery(this, i).outerHeight(true); // thanks to Michael Haszprunar and Fabien Volpi
+				});
+				var $mask = $strip.wrap("<div class='mask'></div>");
+				var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");								
+				var containerHeight = $strip.parent().parent().height();	//a.k.a. 'mask' width 	
+				$strip.height(stripHeight);			
+				var totalTravel = stripHeight;
+				var defTiming = totalTravel/settings.travelocity;	// thanks to Scott Waye		
+				function scrollnews(spazio, tempo){
+				$strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); scrollnews(totalTravel, defTiming);});
+				}
+				scrollnews(totalTravel, defTiming);				
+				$strip.hover(function(){
+				  jQuery(this).stop();
+				},
+				function(){
+				  var offset = jQuery(this).offset();
+				  var residualSpace = offset.top + stripHeight;
+				  var residualTime = residualSpace/settings.travelocity;
+				  scrollnews(residualSpace, residualTime);
+                                   });			
+                         });	
+               };
+               $(function(){
+               $("ul#ticker01").liScroll();
+               });
+</script>
+
+
+
+<!-- Maps -->
+<div class="section-title wow fadeInUp" data-wow-delay="0.1s" style="text-align: center; padding-top: 4%;">
+     <h2 id="mapp">Nearby Healthcare Centers</h2>
+     
+</div>
+ <div id="map" class="section-title wow fadeInUp" data-wow-delay="0.1s" >     
+     <input type="number" id="lat" value=0>
+     <input type="number" id="lon" value=0>
+</div>
+
+
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h2>What we do.</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3 style="font-weight: 100;">We are living in unprecedented times and every person in this world has been impacted by natural disasters in some way or the other. We may not be able to change the past but we can act constructively towards the betterment of the current situation, '<span style="font-weight: 600;">Precaution is better than cure</span>'. To be above this uncertain dilemma of life and death situations, we have built this system to help manage disaster situations, spread awareness and save lives.</h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{%static 'news/images/about-image.jpg'%} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+
+ 
+
+
+     <!-- MENU-->
+     <section id="menu" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2 id="prec">Precautionary Steps</h2>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url  'wildfire'%}" target="_blank" title="Wildfire">
+                                   <img src="{% static 'news/images/wildfires.jpg'%}"  class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Wildfire</h3>
+                                             <p > <a href="{% url  'wildfire'%}" target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                        
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'floods'%}"  target="_blank"  title="Flood">
+                                   <img src="{% static 'news/images/flooood.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                              <h3>Flood</h3>
+                                              <p > <a href="{% url 'floods'%}" target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+                                             </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'violence'%}"  target="_blank"  title="Violence">
+                                   <img src="{% static 'news/images/riots.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                           <h3>Violence</h3>
+                                           <p > <a href={% url 'violence'%} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'earthquake'%}"  target="_blank" title="Earthquake">
+                                   <img src="{%static 'news/images/earthquakeee.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Earthquake</h3>
+                                             <p > <a href={% url 'earthquake'%} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'storms'%}" target="_blank" title="Tornado">
+                                   <img src="{% static 'news/images/tornado.jpg' %}" class="img-responsive" alt="">
+
+                                  <div class="menu-info">
+                                        <div class="menu-item">
+                                            <h3>Tornado</h3>
+                                            <p > <a href={% url 'storms'%} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'pandemic' %}" target="_blank"  title="Pandemic">
+                                   <img src="{% static 'news/images/pandemic.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                           <h3>Pandemic</h3>
+                                           <p > <a href={% url 'pandemic' %} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TESTIMONIAL -->
+    
+
+
+    
+{%endblock%}
+     <!-- FOOTER -->
+     <footer id="footer" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-3 col-sm-8">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Find us</h2>
+                              </div>
+                              <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>123 nulla a cursus rhoncus,<br> augue sem viverra 10870<br>id ultricies sapien</p>
+                              </address>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-8" id="contact">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Contact</h2>
+                              </div>
+                              <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>090-080-0650 | 090-070-0430</p>
+                                   <p><a href="mailto:info@company.com">sem.alpha.sih2020@gmail.com</a></p>
+                              </address>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-8">
+                         <div class="footer-info footer-open-hour">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Office</h2>
+                              </div>
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>Monday: Closed</p>
+                                   <div>
+                                        <strong>Tuesday to Friday</strong>
+                                        <p>7:00 AM - 9:00 PM</p>
+                                   </div>
+                                   <div>
+                                        <strong>Saturday - Sunday</strong>
+                                        <p>11:00 AM - 10:00 PM</p>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4">
+                         <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
+                              <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                              <li><a href="#" class="fa fa-twitter"></a></li>
+                              <li><a href="#" class="fa fa-instagram"></a></li>
+                              <li><a href="#" class="fa fa-google"></a></li>
+                         </ul>
+
+                         <div class="wow fadeInUp copyright-text" data-wow-delay="0.8s"> 
+                              <p><br>Copyright &copy; 2020 <br> SEM_ALPHA
+                              
+                             
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="{%static 'news/js/jquery.js'%}"></script>
+     <script src="{%static 'news/js/bootstrap.min.js'%}"></script>
+     <script src="{%static 'news/js/jquery.stellar.min.js'%}"></script>
+     <script src="{%static 'news/js/wow.min.js'%}"></script>
+     <script src="{%static 'news/js/owl.carousel.min.js'%}"></script>
+     <script src="{%static 'news/js/jquery.magnific-popup.min.js'%}"></script>
+     <script src="{%static 'news/js/smoothscroll.js'%}"></script>
+     <script src="{%static 'news/js/custom.js'%}"></script>
+     
+     
+
+
+</body>
+</html>
