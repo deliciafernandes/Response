@@ -5,8 +5,11 @@ import 'package:response/custom_widgets/CustomNewsTile.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:geocoder/geocoder.dart';
+import 'package:response/utilities/location.dart';
+
+String newsLocation = 'INDIA';
+
+Future<bool> check;
 
 class NewsBody extends StatefulWidget {
   static const String id = '/NewsBody';
@@ -21,23 +24,19 @@ class _NewsBodyState extends State<NewsBody> {
   //New firestore instance
   final _firestore = Firestore.instance;
 
-  _getLocation() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print('location: ${position.latitude}');
-    final coordinates = Coordinates(position.latitude, position.longitude);
-    var addresses =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    var first = addresses.first;
-    print("${first.featureName} : ${first.addressLine}");
+  Location variable = Location();
 
-    // print the best address
-    print("${first.featureName} : ${first.addressLine}");
-    //print other address names
-    print(
-        "Country:${first.countryName} AdminArea:${first.adminArea} SubAdminArea:${first.subAdminArea}");
-    //print more address names
-    print("Locality:${first.locality}: Sublocality:${first.subLocality}");
+  Future<bool> status() async {
+    Location location = Location();
+
+    check = location.checkMatch(newsLocation);
+    print(check);
+
+    if (await check) {
+      print('yes');
+    }
+
+    return check;
   }
 
   @override
@@ -48,8 +47,6 @@ class _NewsBodyState extends State<NewsBody> {
       height: 667.0,
       allowFontScaling: true,
     );
-
-    _getLocation();
 
     return Scaffold(
       body: Column(
@@ -115,28 +112,9 @@ class _NewsBodyState extends State<NewsBody> {
                     ? 'India'
                     : news.data['location']);
 
-//                if(location == users location){
-//                  localNewsWidgets.add(CustomNewsTile(
-//                    date: date == null ? '' : date,
-//                    description: description.isEmpty
-//                        ? 'Take action if you know an earthquake is going to hit before strikes. Secure items that might fall and cause injuries (e.g, bookshelves, mirrors, light fixtures). Practice how to Drop, Cover, and Hold On. Store critical supplies and documents. Plan how you will communicate with family members. Refer to the news link below to find out more. Be healthy, be safe!'
-//                        : description,
-//                    distype: distype == null
-//                        ? 'Disaster'
-//                        : distype[0].toUpperCase() +
-//                        distype.substring(1).toLowerCase(),
-//                    headline: headline.isEmpty
-//                        ? 'Disaster occurred : Refer news for further details.'
-//                        : headline,
-//                    imageurl: imageurl == null
-//                        ? 'https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-//                        : imageurl,
-//                    location: location == null ? 'India' : location,
-//                    url: url == null
-//                        ? 'https://immohann.github.io/Crisis-Management/index.html'
-//                        : url,
-//                  ));
-//                }
+                newsLocation = location.toUpperCase();
+
+                status();
 
                 nationalNewsWidgets.add(CustomNewsTile(
                   date: date == null ? '' : date,
@@ -178,7 +156,3 @@ class _NewsBodyState extends State<NewsBody> {
     );
   }
 }
-
-//if(a.toUpperCase().contains("ANDHERI") ){
-//print('YES');
-//}
