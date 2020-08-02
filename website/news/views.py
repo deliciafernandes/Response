@@ -111,19 +111,38 @@ def first_aid(request):
 
 
 def Relief_help(request):
-    disaster_zone = request.POST.get('dis_zone')
-    location = ''
-    url = "https://www.fast2sms.com/dev/bulk"
-    message = 'Hi I am' + name + ', rn in a disaster zone of' + disaster_zone + ', Please help me. I am injured. My location is'+location +'.'
-    number = phone
-    payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+number
-    headers = {
-    'authorization': "FWLraiHjfoSUGcBeJuOT9sQNCdPbgpw4EXI63yD720ntMA8K51WV1Kw5NTikXExzIA6y74vHJSpClFMb",
-    'Content-Type': "application/x-www-form-urlencoded",
-    'Cache-Control': "no-cache",
-    }
-    response = requests.request("POST", url, data=payload, headers=headers)
-    print(response.text)    
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        contact = request.POST['contact']
+        hospital = request.POST['hospital']
+        user_latitude = request.POST['lat']
+        user_longitude = request.POST['lon']
+
+
+        print(name)
+        print(contact)
+        print(hospital)
+        print(user_longitude,user_longitude)  
+
+    return render(request, 'news/base.html')
+
+def Relief_help2(request):
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        contact = request.POST['contact']
+        ngo = request.POST['ngo']
+        injury = request.POST['injury']
+        user_latitude = request.POST['lat']
+        user_longitude = request.POST['lon']
+
+
+        print(name)
+        print(contact)
+        print(ngo)
+        print(user_longitude,user_longitude)  
+
     return render(request, 'news/base.html')
 
 

@@ -13,7 +13,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
      
      <link rel="stylesheet" href="{% static 'news/css/bootstrap.min.css'%}">
@@ -53,23 +53,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                     function initMap() {
           
                
-               
-               // else {
-               //     alert("Re-load and Allow Location Access.");
-               // }
-          
-               // make the var dynamic n we are done
-                    
-                    //  alert(document.getElementById("lat").value);
+
                     var lat=Number(document.getElementById("lat").value);
                     var lon=Number(document.getElementById("lon").value);
-                    
-                    // var lon= 77.21;
-                    // var lat= 28.66;
-                    
-     
-     
-     
+      
      
                     var sydney = new google.maps.LatLng(lat, lon);
                     exports.infowindow = new google.maps.InfoWindow();
@@ -292,7 +279,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                                         <!--SOS button   -->
                                         <br>
                                         <div class="dropdown">
-                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb">SOS-Ambulance</button>
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb"   >SOS-Ambulance</button>
                                            </div>
 
                                            <div class="dropdown ">
@@ -329,18 +316,88 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
              <div class="modal-body">   
                  <div class="recog">
                       Confirm Sending the message: <br> <br> 
-                    <input type="text" placeholder="Your Name" name = "name"> <br> <br>
-                    <input type="text " placeholder="Disaster Type" name = "distype"> <br> <br>
+                      <form>
 
-                      <a href="#" class="btn btn-primary">SEND</a>
-                      <a href="#" class="btn btn-primary">CANCEL</a>      
+                        <input id="name_user" type="text" placeholder="Your Name" name = "name"> <br> <br>
+                    <input id="distype" type="text " placeholder="Disaster Type" name = "distype"> <br> <br>
+
+                       <button onclick="getLocation()">SOS</button>
+                      <a href="#" class="btn btn-primary">CANCEL</a>
+
+                        </form>
+
+                          
                  </div>                                
                  </div>  
              </div>
          </div>
      </div>
-     
 
+
+<script>
+
+                  function httpGet(theUrl)
+                  {
+                      var xmlHttp = new XMLHttpRequest();
+                      xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                      xmlHttp.send( null );
+                      return xmlHttp.responseText;
+                  }
+
+                  // var x = document.getElementById("demo");
+
+                  function getLocation() {
+                    if (navigator.geolocation) {
+                      navigator.geolocation.getCurrentPosition(showPosition);
+                    } else { 
+                      // x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+                  function showPosition(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=4bf58dd8d48988d196941735&sortByDistance=1";
+
+                    
+                    var response = httpGet(url);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+                    console.log(obj.response.venues[0].name);
+
+                    var hospital= obj.response.venues[0].name;
+            
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user").value;
+
+                    var message = "Alert has been been sent to " + hospital+ " for user " + name;
+                    
+
+                    alert(message) ;
+              
+
+                    
+                    var URL = "{% url 'rel-help' %}";
+
+                    var data = {'name': name,'hospital': hospital, 'contact': contact, 'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+     
 <!-- FIRST AID Modal -->
 <div class="modal fade" id="sos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
      <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
@@ -353,18 +410,94 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
              </div>
              <div class="modal-body">   
                  <div class="recog">
+
+
                       Confirm Sending the message: <br> <br> 
 
-                    <input type="text" placeholder="Your Name"> <br> <br>
-                    <input type="text " placeholder="Injury type"> <br> <br>
+                    <form>
 
-                      <a href="#" class="btn btn-primary">SEND</a>
-                      <a href="#" class="btn btn-primary">CANCEL</a>      
+                        <input id="name_user2" type="text" placeholder="Your Name" name = "name"> <br> <br>
+                    <input id="intype" type="text " placeholder="Injury Type" name = "distype"> <br> <br>
+
+                       <button onclick="getLocation2()">SOS</button>
+                      <a href="#" class="btn btn-primary">CANCEL</a>
+
+                        </form>
+
+                          
                  </div>                                
                  </div>  
              </div>
          </div>
      </div>
+
+<script>
+
+                  // function httpGet(theUrl)
+                  // {
+                  //     var xmlHttp = new XMLHttpRequest();
+                  //     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                  //     xmlHttp.send( null );
+                  //     return xmlHttp.responseText;
+                  // }
+
+                  // var x = document.getElementById("demo");
+
+                  function getLocation2() {
+                    if (navigator.geolocation) {
+                      // print('hi');
+                      navigator.geolocation.getCurrentPosition(showPosition2);
+                    } else { 
+                       x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+
+
+                  function showPosition2(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=50328a8e91d4c4b30a586d6c&sortByDistance=1";
+
+                    var response = httpGet(url);
+                    alert(response);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+
+                    var ngo = obj.response.venues[0].name;
+    
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user2").value;
+
+                    var injury = document.getElementById("intype").value;
+
+                    var message = "Alert has been been sent to " + ngo+ " for user " + name;
+
+              
+                    
+                    var URL = "{% url 'rel-help2' %}";
+
+                    var data = {'name': name,'ngo': ngo, 'contact': contact, 'injury':injury,'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+
+
+
      <section id="home" class="slider" data-stellar-background-ratio="0.5">
           <div class="row">
 
