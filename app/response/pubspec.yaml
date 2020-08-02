@@ -25,6 +25,7 @@ dependencies:
   intl:
   geolocator: ^5.3.2+2
   geocoder: ^0.2.1
+  drawerbehavior: ^1.0.3
 
 #  flutter_sms: ^2.0.1+2
 

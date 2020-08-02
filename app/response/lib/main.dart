@@ -36,8 +36,8 @@ class ResponseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-//      initialRoute: HomePage.id,
-      initialRoute: Test.id,
+      initialRoute: HomePage.id,
+//      initialRoute: Test.id,
       routes: {
         OnboardingScreen.id: (context) => OnboardingScreen(),
 
@@ -55,7 +55,7 @@ class ResponseApp extends StatelessWidget {
         Earthquake.id: (context) => Earthquake(),
 
         //Test
-        Test.id: (context) => Test(),
+//        Test.id: (context) => Test(),
       },
     );
   }
