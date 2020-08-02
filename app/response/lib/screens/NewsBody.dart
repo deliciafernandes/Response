@@ -19,6 +19,7 @@ String newsLocation = 'INDIA';
 
 class NewsBody extends StatefulWidget {
   static const String id = '/NewsBody';
+  //static string disasterType = 'Disaster';
 
   @override
   _NewsBodyState createState() => _NewsBodyState();
@@ -108,6 +109,8 @@ class _NewsBodyState extends State<NewsBody> {
                 final String date = DateFormat('d LLLL, y').format(myDateTime);
                 final String description = news.data['description'];
                 final String distype = news.data['distype'];
+
+//widget.disasterType = distype;
                 final String headline = news.data['headline'];
                 final String imageurl = news.data['imageurl'];
                 final String url = news.data['url'];
@@ -137,6 +140,10 @@ class _NewsBodyState extends State<NewsBody> {
                       ? 'https://immohann.github.io/Crisis-Management/index.html'
                       : url,
                 ));
+
+                var temp = nationalNewsWidgets.reversed.toList();
+
+                localNewsWidgets = temp;
               }
               return Expanded(
                 child: ListView(

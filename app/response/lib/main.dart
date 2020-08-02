@@ -7,6 +7,7 @@ import 'package:response/screens/OnboardingScreen.dart';
 import 'package:flutter/services.dart';
 import 'package:response/screens/PrecautionScreens/earthquake.dart';
 import 'package:response/screens/SOS.dart';
+import 'package:response/screens/SOSselect.dart';
 import 'package:response/screens/WhatToDoBody.dart';
 import 'package:response/test.dart';
 import 'screens/NewsBody.dart';
@@ -35,8 +36,8 @@ class ResponseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-//      initialRoute: Test.id,
-      initialRoute: SOS.id,
+//      initialRoute: SOS.id,
+      initialRoute: HomePage.id,
       routes: {
         OnboardingScreen.id: (context) => OnboardingScreen(),
 
@@ -47,6 +48,7 @@ class ResponseApp extends StatelessWidget {
         MapsBody.id: (context) => MapsBody(),
 
         SOS.id: (context) => SOS(),
+        SOSselect.id: (context) => SOSselect(),
 
         //Detailed Screens
         DetailedNewsPage.id: (context) => DetailedNewsPage(),
