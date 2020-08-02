@@ -2,7 +2,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 
 class LocationService {
-  bool _match = false;
   String _userLocation = 'INDIA';
 
   Future<String> getLocation() async {
@@ -31,18 +30,12 @@ class LocationService {
           locality +
           ' ' +
           subLocality;
+      _userLocation = _userLocation.toString().toUpperCase();
 
       return _userLocation;
     } catch (e) {
       print('$e       : occurred in LocationService.dart');
       return _userLocation;
     }
-  }
-
-  bool checkIfUserLocationAndNewsLocationMatch(String newsLocation) {
-    getLocation();
-    _match = _userLocation.toUpperCase().contains(newsLocation);
-
-    return _match;
   }
 }

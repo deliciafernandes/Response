@@ -4,6 +4,10 @@ import 'package:response/custom_icons/maps_icons.dart';
 import 'package:response/custom_icons/news_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:response/custom_icons/emergency_icons.dart';
+import 'package:response/screens/SOS.dart';
+import 'package:response/utilities/constants.dart';
+
 import 'MapsBody.dart';
 import 'NewsBody.dart';
 import 'WhatToDoBody.dart';
@@ -22,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(), //TODO
-//    MapsBody(), //todo settings screen
+    MapsBody(), //todo settings screen
   ];
 
   int _index = 1;
@@ -40,7 +44,29 @@ class _HomePageState extends State<HomePage> {
       extendBody: true,
       backgroundColor: Colors.white,
       body: _widgetList[_index],
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: Text(
+          'RESPONSE',
+          style: kCustomAppBarResponseLogoTextStyle,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.menu, size: 20.0.w, color: Colors.black),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Emergency.warning, size: 20.0.w, color: Colors.black),
+            onPressed: () {
+              Navigator.pushNamed(context, SOS.id);
+            },
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _index,
         backgroundColor: Colors.black87,
         selectedItemColor: Colors.white,
@@ -62,10 +88,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Maps.location),
               title: Text('Map', style: TextStyle(fontFamily: 'WorkSans'))),
-//          BottomNavigationBarItem(
-//              icon: Icon(Icons.settings),
-//              title:
-//                  Text('Settings', style: TextStyle(fontFamily: 'WorkSans'))),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title:
+                  Text('Settings', style: TextStyle(fontFamily: 'WorkSans'))),
         ],
       ),
     );

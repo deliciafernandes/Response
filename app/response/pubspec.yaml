@@ -25,6 +25,7 @@ dependencies:
   intl:
   geolocator: ^5.3.2+2
   geocoder: ^0.2.1
+  drawerbehavior: ^1.0.3
 
 #  flutter_sms: ^2.0.1+2
 
@@ -111,5 +112,9 @@ flutter:
     - family: Emergency
       fonts:
         - asset: assets/fonts/Emergency.ttf
+
+    - family: DrawerIcon
+      fonts:
+        - asset: assets/fonts/DrawerIcon.ttf
 
 

@@ -9,16 +9,15 @@ import 'package:response/screens/PrecautionScreens/earthquake.dart';
 import 'package:response/screens/SOS.dart';
 import 'package:response/screens/SOSselect.dart';
 import 'package:response/screens/WhatToDoBody.dart';
-import 'package:response/test.dart';
 import 'screens/NewsBody.dart';
 import 'screens/HomePage.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-//      statusBarColor: Colors.black,
+      statusBarColor: Colors.black,
       systemNavigationBarColor: Platform.isAndroid ? Colors.black : null,
-//      systemNavigationBarDividerColor: Colors.black,
+      systemNavigationBarDividerColor: Colors.black,
     ),
   );
 
@@ -36,8 +35,8 @@ class ResponseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-//      initialRoute: SOS.id,
       initialRoute: HomePage.id,
+//      initialRoute: Test.id,
       routes: {
         OnboardingScreen.id: (context) => OnboardingScreen(),
 
@@ -55,7 +54,7 @@ class ResponseApp extends StatelessWidget {
         Earthquake.id: (context) => Earthquake(),
 
         //Test
-        Test.id: (context) => Test(),
+//        Test.id: (context) => Test(),
       },
     );
   }
