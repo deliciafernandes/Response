@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share/share.dart' as ShareFunction;
 
-class CustomTile extends StatelessWidget {
+class CustomSOSTile extends StatelessWidget {
   final String disaster;
 
-  CustomTile({@required this.disaster});
+  CustomSOSTile({@required this.disaster});
 
   @override
   Widget build(BuildContext context) {

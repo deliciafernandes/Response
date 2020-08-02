@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:response/custom_widgets/CustomTile.dart';
+import 'package:response/custom_widgets/CustomSOSTile.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 
 class SOSselect extends StatelessWidget {
   static const String id = '/SOSselect';
 
-  List<CustomTile> _buildList() {
-    List<CustomTile> _list = [];
+  List<CustomSOSTile> _buildList() {
+    List<CustomSOSTile> _list = [];
 
     List<String> disasters = [
       'Earthquake',
@@ -18,7 +18,7 @@ class SOSselect extends StatelessWidget {
     ];
 
     for (int index = 0; index < disasters.length; index++) {
-      var item = CustomTile(
+      var item = CustomSOSTile(
         disaster: disasters[index],
       );
       _list.add(item);
