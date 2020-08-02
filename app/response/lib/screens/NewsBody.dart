@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:response/custom_widgets/CustomAppBar.dart';
 import 'package:response/custom_widgets/CustomNewsTile.dart';
-import 'package:response/utilities/LocationService.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';

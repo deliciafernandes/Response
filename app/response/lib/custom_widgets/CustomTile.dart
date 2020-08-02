@@ -16,9 +16,13 @@ class CustomTile extends StatelessWidget {
       allowFontScaling: true,
     );
 
-    // ${NewsBody.disasterType}
+    // ${NewsBody.disasterType}  _sendSMS();
     _sendSMS() async {
-      List<String> recipients = ["9920238345", ""];
+      List<String> recipients = [
+        "9920238345", //del
+        "9869200737", //jay
+        '80804 08783', //dwy
+      ];
       String _result = await FlutterSms.sendSMS(
               message:
                   " Hi, Right now I am in a disaster zone of Earthquake, Please help me, My location is <location>, call an ambulance at my location. The nearest hospital is <hospital name> and contact no of it is <number>. Thank you.",
@@ -58,28 +62,14 @@ class CustomTile extends StatelessWidget {
             ),
             padding: EdgeInsets.symmetric(horizontal: 20.0.w),
             child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '$disaster',
-                    style: TextStyle(
-                      fontSize: ScreenUtil().setSp(18.0),
-                      fontFamily: 'WorkSans-Black',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      //trigger sms to
-                    },
-                  )
-                ],
+              child: Text(
+                '$disaster',
+                style: TextStyle(
+                  fontSize: ScreenUtil().setSp(18.0),
+                  fontFamily: 'WorkSans-Black',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

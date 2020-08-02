@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:response/utilities/constants.dart';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'SOSselect.dart';
 
@@ -237,25 +234,25 @@ class _SOSState extends State<SOS> with SingleTickerProviderStateMixin {
     );
   }
 
-  Iterable<Contact> _contacts;
-
-  getContacts() async {
+//  Iterable<Contact> _contacts;
+//
+//  getContacts() async {
 //    PermissionStatus permissionStatus = await _getPermission();
-    PermissionStatus permissionStatus = PermissionStatus.granted;
-
-    if (permissionStatus == PermissionStatus.granted) {
-      var contacts = await ContactsService.getContacts();
-      setState(() {
-        _contacts = contacts;
-      });
-    } else {
-      throw PlatformException(
-        code: 'PERMISSION_DENIED',
-        message: 'Access to location data denied',
-        details: null,
-      );
-    }
-  }
+//    PermissionStatus permissionStatus = PermissionStatus.granted;
+//
+//    if (permissionStatus == PermissionStatus.granted) {
+//      var contacts = await ContactsService.getContacts();
+//      setState(() {
+//        _contacts = contacts;
+//      });
+//    } else {
+//      throw PlatformException(
+//        code: 'PERMISSION_DENIED',
+//        message: 'Access to location data denied',
+//        details: null,
+//      );
+//    }
+//  }
 //
 //  Future<PermissionStatus> _getPermission() async {
 //    PermissionStatus permission = await PermissionHandler()
