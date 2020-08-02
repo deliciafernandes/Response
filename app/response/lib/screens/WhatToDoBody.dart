@@ -65,6 +65,7 @@ class _WhatToDoBodyState extends State<WhatToDoBody>
 
     return Column(
       children: [
+        CustomAppBar(),
         Container(
           width: _width - 40.0.w,
           height: 180.0.h,
