@@ -9,7 +9,6 @@ import 'package:response/screens/PrecautionScreens/earthquake.dart';
 import 'package:response/screens/SOS.dart';
 import 'package:response/screens/SOSselect.dart';
 import 'package:response/screens/WhatToDoBody.dart';
-import 'package:response/test.dart';
 import 'screens/NewsBody.dart';
 import 'screens/HomePage.dart';
 

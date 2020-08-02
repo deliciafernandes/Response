@@ -11,12 +11,6 @@ class MapsBody extends StatefulWidget {
 class _MapsBodyState extends State<MapsBody> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          CustomAppBar(),
-        ],
-      ),
-    );
+    return Scaffold();
   }
 }
