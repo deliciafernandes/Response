@@ -15,9 +15,9 @@ import 'screens/HomePage.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-//      statusBarColor: Colors.black,
+      statusBarColor: Colors.black,
       systemNavigationBarColor: Platform.isAndroid ? Colors.black : null,
-//      systemNavigationBarDividerColor: Colors.black,
+      systemNavigationBarDividerColor: Colors.black,
     ),
   );
 
