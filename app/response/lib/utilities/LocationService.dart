@@ -1,17 +1,19 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 
-class Location {
-  bool match;
+class LocationService {
+  bool _match = false;
+  String _userLocation = 'INDIA';
 
-  Future<bool> checkMatch(String _newsLocation) async {
+  Future<String> getLocation() async {
     try {
       Position position = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.medium);
 
       final coordinates = Coordinates(position.latitude, position.longitude);
       var addresses =
           await Geocoder.local.findAddressesFromCoordinates(coordinates);
+
       var first = addresses.first;
 
       var country = first.countryName;
@@ -20,7 +22,7 @@ class Location {
       var locality = first.locality;
       var subLocality = first.subLocality;
 
-      String _userLocation = country +
+      _userLocation = country +
           ' ' +
           adminArea +
           ' ' +
@@ -30,14 +32,17 @@ class Location {
           ' ' +
           subLocality;
 
-      match = _userLocation.toUpperCase().contains(_newsLocation);
-
-      return match;
+      return _userLocation;
     } catch (e) {
-      match = false;
-
-      return match;
-      print('$e       : occurred in location.dart');
+      print('$e       : occurred in LocationService.dart');
+      return _userLocation;
     }
+  }
+
+  bool checkIfUserLocationAndNewsLocationMatch(String newsLocation) {
+    getLocation();
+    _match = _userLocation.toUpperCase().contains(newsLocation);
+
+    return _match;
   }
 }

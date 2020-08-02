@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(), //TODO
-    MapsBody(), //todo settings screen
+//    MapsBody(), //todo settings screen
   ];
 
   int _index = 1;
@@ -38,7 +38,6 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       extendBody: true,
-//      backgroundColor: Color(0xffEEECEE),
       backgroundColor: Colors.white,
       body: _widgetList[_index],
       bottomNavigationBar: BottomNavigationBar(

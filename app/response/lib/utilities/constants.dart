@@ -11,22 +11,6 @@ const Color kDarkPinkRedColor = Color(0xff8D1D1A);
 
 const Color kLightRed = Color(0xffEC6C6D);
 
-//const Color kTextFieldForgotPageColor = Color(0xffCBE9F6);
-//const Color kTextFieldForgotPageBorderColor = Colors.blueAccent;
-
-//const kBodyStyle = TextStyle(fontSize: 19.0, fontFamily: 'WorkSans-Regular');
-//const kPageDecoration = PageDecoration(
-//  titleTextStyle: TextStyle(
-//    fontSize: 25.0,
-//    fontWeight: FontWeight.w700,
-//    fontFamily: 'WorkSans-Black',
-//  ),
-//  bodyTextStyle: kBodyStyle,
-//  descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-//  pageColor: Colors.white,
-//  imagePadding: EdgeInsets.symmetric(horizontal: 5.0),
-//);
-
 TextStyle kWhatToDoTitleStyle = TextStyle(
   fontSize: ScreenUtil().setSp(20.0),
   fontFamily: 'WorkSans',
