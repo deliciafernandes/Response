@@ -112,4 +112,8 @@ flutter:
       fonts:
         - asset: assets/fonts/Emergency.ttf
 
+    - family: DrawerIcon
+      fonts:
+        - asset: assets/fonts/DrawerIcon.ttf
+
 

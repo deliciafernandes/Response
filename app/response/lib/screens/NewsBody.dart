@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:response/custom_widgets/CustomAppBar.dart';
 import 'package:response/custom_widgets/CustomNewsTile.dart';
@@ -135,14 +136,16 @@ class _NewsBodyState extends State<NewsBody> {
                       ));
                     }
                     return Expanded(
-                      child: ListView(
-                        padding: EdgeInsets.only(
-                            bottom: 70.0.w, top: 0.0, right: 0.0, left: 0.0),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: AlwaysScrollableScrollPhysics(),
-                        children: nationalNewsWidgets,
-                      ),
+                      child: ListView.builder(
+                          padding: EdgeInsets.only(
+                              bottom: 70.0.w, top: 0.0, right: 0.0, left: 0.0),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: AlwaysScrollableScrollPhysics(),
+                          itemCount: nationalNewsWidgets.length,
+                          itemBuilder: (context, i) {
+                            return nationalNewsWidgets[i];
+                          }),
                     );
                   },
                 )
@@ -203,14 +206,16 @@ class _NewsBodyState extends State<NewsBody> {
                     }
 
                     return Expanded(
-                      child: ListView(
-                        padding: EdgeInsets.only(
-                            bottom: 70.0.w, top: 0.0, right: 0.0, left: 0.0),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: AlwaysScrollableScrollPhysics(),
-                        children: localNewsWidgets,
-                      ),
+                      child: ListView.builder(
+                          padding: EdgeInsets.only(
+                              bottom: 70.0.w, top: 0.0, right: 0.0, left: 0.0),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: AlwaysScrollableScrollPhysics(),
+                          itemCount: localNewsWidgets.length,
+                          itemBuilder: (context, i) {
+                            return localNewsWidgets[i];
+                          }),
                     );
                   },
                 ),
@@ -219,11 +224,3 @@ class _NewsBodyState extends State<NewsBody> {
     );
   }
 }
-
-//String date;
-//String description;
-//String distype;
-//String headline;
-//String imageurl;
-//String url;
-//String location;

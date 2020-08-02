@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:response/custom_widgets/CustomMenuPage.dart';
+import 'package:response/custom_widgets/CustomDrawerWidget.dart';
 import 'custom_widgets/CustomZoomScaffold.dart';
 
 class Test extends StatefulWidget {
@@ -35,7 +35,7 @@ class _TestState extends State<Test> with TickerProviderStateMixin {
 //      create: (context) => menuController,
       value: menuController,
       child: CustomZoomScaffold(
-        menuScreen: CustomMenuPage(),
+        menuScreen: CustomDrawerWidget(),
         contentScreen: Layout(
           contentBuilder: (cc) => Container(
             color: Colors.grey[200],

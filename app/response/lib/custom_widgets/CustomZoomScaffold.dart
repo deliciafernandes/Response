@@ -21,31 +21,38 @@ class _CustomZoomScaffoldState extends State<CustomZoomScaffold>
   Curve slideOutCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
   Curve slideInCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
 
+  bool _isClicked = false;
+
   createContentDisplay() {
     return zoomAndSlideContent(new Container(
       child: new Scaffold(
         backgroundColor: Colors.transparent,
         appBar: new AppBar(
-            backgroundColor: Colors.grey[200],
-            elevation: 0.0,
-            leading: new IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                ),
-                onPressed: () {
-                  Provider.of<MenuController>(context, listen: false).toggle();
-                }),
-            actions: <Widget>[
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.access_time,
-                  color: Colors.grey,
-                ),
-              )
-            ]),
-        body: widget.contentScreen.contentBuilder(context),
+          backgroundColor: Colors.grey[200],
+          elevation: 0.0,
+          leading: new IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  _isClicked = true;
+                });
+                Provider.of<MenuController>(context, listen: false).toggle();
+              }),
+        ),
+        body: GestureDetector(
+            onTap: () {
+              if (_isClicked) {
+                Provider.of<MenuController>(context, listen: false).toggle();
+              }
+
+              setState(() {
+                _isClicked = false;
+              });
+            },
+            child: widget.contentScreen.contentBuilder(context)),
       ),
     ));
   }
@@ -79,7 +86,7 @@ class _CustomZoomScaffoldState extends State<CustomZoomScaffold>
     final slideAmount = 275.0 * slidePercent;
     final contentScale = 1.0 - (0.2 * scalePercent);
     final cornerRadius =
-        16.0 * Provider.of<MenuController>(context, listen: true).percentOpen;
+        20.0 * Provider.of<MenuController>(context, listen: true).percentOpen;
 
     return new Transform(
       transform: new Matrix4.translationValues(slideAmount, 0.0, 0.0)

@@ -36,8 +36,8 @@ class ResponseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-//      initialRoute: SOS.id,
-      initialRoute: HomePage.id,
+//      initialRoute: HomePage.id,
+      initialRoute: Test.id,
       routes: {
         OnboardingScreen.id: (context) => OnboardingScreen(),
 
