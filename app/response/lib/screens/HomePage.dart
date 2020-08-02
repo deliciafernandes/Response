@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(), //TODO
-//    MapsBody(), //todo settings screen
+    MapsBody(),
   ];
 
   int _index = 1;
@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       body: _widgetList[_index],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _index,
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black87,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,
@@ -62,10 +63,9 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Maps.location),
               title: Text('Map', style: TextStyle(fontFamily: 'WorkSans'))),
-//          BottomNavigationBarItem(
-//              icon: Icon(Icons.settings),
-//              title:
-//                  Text('Settings', style: TextStyle(fontFamily: 'WorkSans'))),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Temp', style: TextStyle(fontFamily: 'WorkSans'))),
         ],
       ),
     );
