@@ -4,6 +4,7 @@ import 'package:response/custom_widgets/CustomAppBar.dart';
 import 'package:response/custom_widgets/CustomNewsTile.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class NewsBody extends StatefulWidget {
   static const String id = '/NewsBody';
@@ -62,56 +63,93 @@ class _NewsBodyState extends State<NewsBody> {
             ),
           ),
           StreamBuilder<QuerySnapshot>(
-              // ignore: missing_return
-              stream: _firestore.collection('RealNews').snapshots(),
-              // ignore: missing_return
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                        backgroundColor: Colors.blueAccent),
-                  );
-                }
-                final realNews = snapshot.data.documents;
-
-                List<CustomNewsTile> newsWidgets = [];
-
-                for (var news in realNews) {
-                  final Timestamp testDate = news.data['date'];
-
-//                  print(testDate.seconds);
-
-                  final String date = 'July 31, 2020';
-
-                  final String description = news.data['description'];
-                  final String distype = news.data['distype'];
-                  final String headline = news.data['headline'];
-                  final String imageurl = news.data['imageurl'];
-                  final String location = news.data['location'];
-                  final String url = news.data['url'];
-
-                  newsWidgets.add(CustomNewsTile(
-                    date: date,
-                    description: description,
-                    distype: distype[0].toUpperCase() +
-                        distype.substring(1).toLowerCase(),
-                    headline: headline,
-                    imageurl: imageurl,
-                    location: location,
-                    url: url,
-                  ));
-                }
-                return Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.only(
-                        bottom: 70.0.w, top: 0.0, right: 0.0, left: 0.0),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    physics: AlwaysScrollableScrollPhysics(),
-                    children: newsWidgets,
-                  ),
+            stream: _firestore.collection('RealNews').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(
+                      backgroundColor: Colors.blueAccent),
                 );
-              }),
+              }
+              final realNews = snapshot.data.documents;
+
+              List<CustomNewsTile> newsWidgets = [];
+              List<CustomNewsTile> nationalNewsWidgets = [];
+              List<CustomNewsTile> localNewsWidgets = [];
+
+              for (var news in realNews) {
+                //date conversion
+                DateTime myDateTime =
+                    DateTime.parse(news.data['date'].toDate().toString());
+
+                final String date = DateFormat('d LLLL, y').format(myDateTime);
+                final String description = news.data['description'];
+                final String distype = news.data['distype'];
+                final String headline = news.data['headline'];
+                final String imageurl = news.data['imageurl'];
+                final String url = news.data['url'];
+                final String location = (news.data['location'] == null
+                    ? 'India'
+                    : news.data['location']);
+
+//                if(location == users location){
+//                  localNewsWidgets.add(CustomNewsTile(
+//                    date: date == null ? '' : date,
+//                    description: description.isEmpty
+//                        ? 'Take action if you know an earthquake is going to hit before strikes. Secure items that might fall and cause injuries (e.g, bookshelves, mirrors, light fixtures). Practice how to Drop, Cover, and Hold On. Store critical supplies and documents. Plan how you will communicate with family members. Refer to the news link below to find out more. Be healthy, be safe!'
+//                        : description,
+//                    distype: distype == null
+//                        ? 'Disaster'
+//                        : distype[0].toUpperCase() +
+//                        distype.substring(1).toLowerCase(),
+//                    headline: headline.isEmpty
+//                        ? 'Disaster occurred : Refer news for further details.'
+//                        : headline,
+//                    imageurl: imageurl == null
+//                        ? 'https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+//                        : imageurl,
+//                    location: location == null ? 'India' : location,
+//                    url: url == null
+//                        ? 'https://immohann.github.io/Crisis-Management/index.html'
+//                        : url,
+//                  ));
+//                }
+
+                nationalNewsWidgets.add(CustomNewsTile(
+                  date: date == null ? '' : date,
+                  description: description.isEmpty
+                      ? 'Take action if you know an earthquake is going to hit before strikes. Secure items that might fall and cause injuries (e.g, bookshelves, mirrors, light fixtures). Practice how to Drop, Cover, and Hold On. Store critical supplies and documents. Plan how you will communicate with family members. Refer to the news link below to find out more. Be healthy, be safe!'
+                      : description,
+                  distype: distype == null
+                      ? 'Disaster'
+                      : distype[0].toUpperCase() +
+                          distype.substring(1).toLowerCase(),
+                  headline: headline.isEmpty
+                      ? 'Disaster occurred : Refer news for further details.'
+                      : headline,
+                  imageurl: imageurl == null
+                      ? 'https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+                      : imageurl,
+                  location: location == null ? 'India' : location,
+                  url: url == null
+                      ? 'https://immohann.github.io/Crisis-Management/index.html'
+                      : url,
+                ));
+              }
+              return Expanded(
+                child: ListView(
+                  padding: EdgeInsets.only(
+                      bottom: 70.0.w, top: 0.0, right: 0.0, left: 0.0),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: AlwaysScrollableScrollPhysics(),
+                  children: _isClicked == 'national'
+                      ? nationalNewsWidgets
+                      : localNewsWidgets,
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

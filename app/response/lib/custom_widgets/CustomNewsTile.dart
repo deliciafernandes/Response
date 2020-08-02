@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:response/screens/DetailedNewsPage.dart';
 import 'package:response/utilities/constants.dart';
@@ -43,6 +42,19 @@ class _CustomNewsTileState extends State<CustomNewsTile>
     _animationController.dispose();
     super.dispose();
   }
+
+//  String imageUrl;
+//  NetworkImage _buildImage() {
+//    imageUrl = widget.imageurl;
+//    try {
+//      return NetworkImage(widget.imageurl);
+//    } catch (e) {
+//      imageUrl =
+//          'https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+//      return NetworkImage(
+//          'https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+//    }
+//  }
 
   @override
   Widget build(BuildContext context) {

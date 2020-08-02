@@ -51,13 +51,6 @@ class ResponseApp extends StatelessWidget {
 
         //Test
         Test.id: (context) => Test(),
-
-//        Division:
-//        HelloPage.id: (context) => HelloPage(),
-//        SignUpWithEmail.id: (context) => SignUpWithEmail(),
-//        SignInWithPhone.id: (context) => SignInWithPhone(),
-//        LoginPage.id: (context) => LoginPage(),
-//        ForgotYourPasswordPage.id: (context) => ForgotYourPasswordPage(),
       },
     );
   }

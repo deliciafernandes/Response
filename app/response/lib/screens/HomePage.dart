@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _widgetList = [
     WhatToDoBody(),
     NewsBody(),
-    MapsBody(), //On hold
+    MapsBody(), //TODO
   ];
 
   int _index = 1;

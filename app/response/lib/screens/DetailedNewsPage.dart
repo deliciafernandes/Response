@@ -50,6 +50,15 @@ class _DetailedNewsPageState extends State<DetailedNewsPage>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
 
+  NetworkImage _buildImage() {
+    try {
+      return NetworkImage(widget.imageurl);
+    } catch (e) {
+      return NetworkImage(
+          'https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    }
+  }
+
   void initState() {
     super.initState();
 
@@ -164,8 +173,7 @@ class _DetailedNewsPageState extends State<DetailedNewsPage>
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20.0.w)),
                                   image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(widget.imageurl)),
+                                      fit: BoxFit.cover, image: _buildImage()),
                                 ),
                                 child: Container(
                                   padding: EdgeInsets.only(

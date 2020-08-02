@@ -12,18 +12,12 @@ class _MapsBodyState extends State<MapsBody>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
 
-  Animation _animation;
-
   void initState() {
     super.initState();
 
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 1));
     _animationController.repeat(reverse: true);
-    _animation = Tween(begin: 2.0, end: 15.0).animate(_animationController)
-      ..addListener(() {
-        setState(() {});
-      });
   }
 
   @override
