@@ -1,7 +1,7 @@
 {%load static%}
  <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
 
      <title>Disaster Management: SEM_ALPHA</title>
 
@@ -13,7 +13,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
      
      <link rel="stylesheet" href="{% static 'news/css/bootstrap.min.css'%}">
@@ -28,7 +28,7 @@
      
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUkibkNzBsA&callback=initMap&libraries=places">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4nyMP_pwA&callback=initMap&libraries=places">
 </script>
      
 <!-- MAP MIAN SCRIPT -->
@@ -53,23 +53,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                     function initMap() {
           
                
-               
-               // else {
-               //     alert("Re-load and Allow Location Access.");
-               // }
-          
-               // make the var dynamic n we are done
-                    
-                    //  alert(document.getElementById("lat").value);
+
                     var lat=Number(document.getElementById("lat").value);
                     var lon=Number(document.getElementById("lon").value);
-                    
-                    // var lon= 77.21;
-                    // var lat= 28.66;
-                    
-     
-     
-     
+      
      
                     var sydney = new google.maps.LatLng(lat, lon);
                     exports.infowindow = new google.maps.InfoWindow();
@@ -169,6 +156,16 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                </div>
 
           </div>
+           <!-- language ---------------------->
+           <div id="google_translate_element"></div>
+
+           <script type="text/javascript">
+           function googleTranslateElementInit() {
+           new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+           }
+           </script>
+
+       <!-- language --------------------->
      </section>
 
 
@@ -258,7 +255,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
   <button class="section-btn col-md-4 mb-3" type="submit" name="submit" style=" margin-left: 50px;" >Sign up</button>
 
   </div>
-  }
+
   
 
    
@@ -292,12 +289,12 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                                         <!--SOS button   -->
                                         <br>
                                         <div class="dropdown">
-                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb">SOS-Ambulance</button>
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb"   >SOS-Ambulance</button>
                                            </div>
 
                                            <div class="dropdown ">
                                              <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#sos">SOS-First-Aid</button>
-                                             <div class="dropdown-content">
+                                             
                                            </div>
 
                                          <!-- SOS  ends here-->
@@ -316,6 +313,18 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                     </div>
           </div>
      </section>
+
+
+<!-- chatbot ----------------------------------------------------------->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"> </script>
+     <df-messenger
+       intent="WELCOME"
+       chat-title="Response"
+       agent-id="b9478ac3-83a8-4045-994e-cc519a59eae8"
+       language-code="en"
+     ></df-messenger>
+<!-- ------------------------------------------------------------------->
+     
      <!-- Ambulance Modal -->
 <div class="modal fade" id="amb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
      <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
@@ -329,18 +338,88 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
              <div class="modal-body">   
                  <div class="recog">
                       Confirm Sending the message: <br> <br> 
-                    <input type="text" placeholder="Your Name" name = "name"> <br> <br>
-                    <input type="text " placeholder="Disaster Type" name = "distype"> <br> <br>
+                      <form>
 
-                      <a href="#" class="btn btn-primary">SEND</a>
-                      <a href="#" class="btn btn-primary">CANCEL</a>      
+                        <input id="name_user" type="text" placeholder="Your Name" name = "name" class="field" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+                    <input id="distype" type="text " placeholder="Disaster Type" name = "distype" class="field" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+
+                    <a href="#" class="btn btn-primary" onclick="getLocation()" >SOS</a>
+                      <a href="#" class="btn btn-primary">CANCEL</a>
+
+                        </form>
+
+                          
                  </div>                                
                  </div>  
              </div>
          </div>
      </div>
-     
 
+
+<script>
+
+                  function httpGet(theUrl)
+                  {
+                      var xmlHttp = new XMLHttpRequest();
+                      xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                      xmlHttp.send( null );
+                      return xmlHttp.responseText;
+                  }
+
+                  // var x = document.getElementById("demo");
+
+                  function getLocation() {
+                    if (navigator.geolocation) {
+                      navigator.geolocation.getCurrentPosition(showPosition);
+                    } else { 
+                      // x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+                  function showPosition(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=4bf58dd8d48988d196941735&sortByDistance=1";
+
+                    
+                    var response = httpGet(url);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+                    console.log(obj.response.venues[0].name);
+
+                    var hospital= obj.response.venues[0].name;
+            
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user").value;
+
+                    var message = "Alert has been been sent to " + hospital+ " for user " + name;
+                    
+
+                    alert(message) ;
+              
+
+                    
+                    var URL = "{% url 'rel-help' %}";
+
+                    var data = {'name': name,'hospital': hospital, 'contact': contact, 'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+     
 <!-- FIRST AID Modal -->
 <div class="modal fade" id="sos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
      <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
@@ -353,52 +432,93 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
              </div>
              <div class="modal-body">   
                  <div class="recog">
+
+
                       Confirm Sending the message: <br> <br> 
 
-                    <input type="text" placeholder="Your Name"> <br> <br>
-                    <input type="text " placeholder="Injury type"> <br> <br>
+                    <form>
 
-                      <a href="#" class="btn btn-primary">SEND</a>
-                      <a href="#" class="btn btn-primary">CANCEL</a>      
+                        <input id="name_user2" type="text" placeholder="Your Name" name = "name" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+                    <input id="intype" type="text " placeholder="Injury Type" name = "distype" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+
+                    <a href="#" class="btn btn-primary" onclick="getLocation2()">SOS</a>
+
+                      <a href="#" class="btn btn-primary">CANCEL</a>
+
+                        </form>
+
+                          
                  </div>                                
                  </div>  
              </div>
          </div>
      </div>
-     <section id="home" class="slider" data-stellar-background-ratio="0.5">
-          <div class="row">
 
-                    <div class="owl-carousel owl-theme">
-                         <div class="item item-first">
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-8 col-sm-8">
-                                             <h3>Disaster management and Emergency precautions!</h3>
-                                            
-                                             <h1>Stay updated! Stay safe! </h1>
-                                            
-                                        </div>
-                                            <div class="col-md-2 col-sm-2">
-                                             
-                                             <a href="{%url 'first-aid'%}" target="_blank" class="section-btn btn btn-default smoothScroll">First - Aid Steps . </a><br>
-                                             <a href="#mapp" class="section-btn btn btn-default smoothScroll">Healthcare Centers </a><br>
-                                             <a href="#prec" class="section-btn btn btn-default smoothScroll">Precautionary Steps</a>
-                                             
-                                             <!--   notify button start-->
-											 <!--   notify button ends-->
+<script>
 
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+                  // function httpGet(theUrl)
+                  // {
+                  //     var xmlHttp = new XMLHttpRequest();
+                  //     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                  //     xmlHttp.send( null );
+                  //     return xmlHttp.responseText;
+                  // }
 
-                         
+                  // var x = document.getElementById("demo");
 
-                         
-                    </div>
+                  function getLocation2() {
+                    if (navigator.geolocation) {
+                      // print('hi');
+                      navigator.geolocation.getCurrentPosition(showPosition2);
+                    } else { 
+                       x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
 
-          </div>
-     </section>
+
+
+                  function showPosition2(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=50328a8e91d4c4b30a586d6c&sortByDistance=1";
+
+                    var response = httpGet(url);
+                    alert(response);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+
+                    var ngo = obj.response.venues[0].name;
+    
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user2").value;
+
+                    var injury = document.getElementById("intype").value;
+
+                    var message = "Alert has been been sent to " + ngo+ " for user " + name;
+
+              
+                    
+                    var URL = "{% url 'rel-help2' %}";
+
+                    var data = {'name': name,'ngo': ngo, 'contact': contact, 'injury':injury,'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+
 
 
 
@@ -489,15 +609,15 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                                              {% for  key,value in r.iterrows  %}
                                              
 
-                                                  <li> 
+                                                  <li style="height: 70px;"> 
                                                        <div class="col-md-4">
                                                              <img src="{{value.image_url}}" alt="loading..." class="newsi">
                                                         </div>
-                                                        <div class="col-md-8">
-                                                             <span>{{value.date}}</span><a href="#" data-toggle="modal" data-target="#news1">  <br>{{value.headline}}</a>
-                                                              <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">Facebook</a> 
-                                                              <a href="https://twitter.com/home?status={{value.share_string}}%20http://codingforentrepreneurs.com/">Twitter</a>
-                                                              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}/&title={{value.headline}}&summary={{value.share_link}}">Linkedin</a>
+                                                        <div class="col-md-8" style="font-size: small;">
+                                                             <span>{{value.date}}</span><a href="#" data-toggle="modal" data-target="#news1">  <br>{{value.headline}}</a> <br>
+                                                              <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">  <img src="{% static 'news/images/fb.jpeg' %}" alt="" class="mm-img" style="width: 20px;"> </a> 
+                                                              <a href="https://twitter.com/home?status={{value.share_string}}%20http://codingforentrepreneurs.com/"><img src="{% static 'news/images/twitter.png' %}" alt="" class="mm-img" style="width: 20px;"></a>
+                                                              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}/&title={{value.headline}}&summary={{value.share_link}}"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="" class="mm-img" style="width: 20px;"></a>
                                                         </div> <br>
                                                    </li>
                                                   {%endfor%}
@@ -521,7 +641,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
                       <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
-                  <div cCorona virus invadinlass="modal-body"> 
+                  <div cCorona virus invadinlass="modal-body" style="padding: 3%;"> 
                        <span> mad gay</span>
                        <h5>big gay</h5>
                        <p>gay</p>
@@ -538,10 +658,10 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmVPctb07LMUbtImoe4EijQUk
           <div class="modal-dialog" role="document" style="margin-top: 27%; width: 11%; ">
               <div class="modal-content" >
                   <div class="modal-body"> 
-                       <a href="#"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="loading.." class="mm-img">     </a>   
-                       <a href="#"><img src="{% static 'news/images/reddit.jpeg' %} " alt="loading.." class="mm-img">     </a>   
-                       <a href="#"><img src="{% static 'news/images/fb.jpeg' %} " alt="loading.." class="mm-img">     </a>   
-                       <a href="#"><img src="{% static 'news/images/twitter.png' %} " alt="loading.." class="mm-img">     </a>   
+                       <a href="#"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/reddit.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/fb.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/twitter.png' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
                       </div>  
                   </div>
               </div>
