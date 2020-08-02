@@ -5,6 +5,8 @@ import 'package:response/custom_widgets/CustomNewsTile.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoder/geocoder.dart';
 
 class NewsBody extends StatefulWidget {
   static const String id = '/NewsBody';
@@ -19,6 +21,25 @@ class _NewsBodyState extends State<NewsBody> {
   //New firestore instance
   final _firestore = Firestore.instance;
 
+  _getLocation() async {
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print('location: ${position.latitude}');
+    final coordinates = Coordinates(position.latitude, position.longitude);
+    var addresses =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var first = addresses.first;
+    print("${first.featureName} : ${first.addressLine}");
+
+    // print the best address
+    print("${first.featureName} : ${first.addressLine}");
+    //print other address names
+    print(
+        "Country:${first.countryName} AdminArea:${first.adminArea} SubAdminArea:${first.subAdminArea}");
+    //print more address names
+    print("Locality:${first.locality}: Sublocality:${first.subLocality}");
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -27,6 +48,8 @@ class _NewsBodyState extends State<NewsBody> {
       height: 667.0,
       allowFontScaling: true,
     );
+
+    _getLocation();
 
     return Scaffold(
       body: Column(
@@ -155,3 +178,7 @@ class _NewsBodyState extends State<NewsBody> {
     );
   }
 }
+
+//if(a.toUpperCase().contains("ANDHERI") ){
+//print('YES');
+//}

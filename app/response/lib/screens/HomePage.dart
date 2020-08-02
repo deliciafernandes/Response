@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(), //TODO
+    MapsBody(), //todo settings screen
   ];
 
   int _index = 1;
@@ -62,6 +63,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Maps.location),
               title: Text('Map', style: TextStyle(fontFamily: 'WorkSans'))),
+//          BottomNavigationBarItem(
+//              icon: Icon(Icons.settings),
+//              title:
+//                  Text('Settings', style: TextStyle(fontFamily: 'WorkSans'))),
         ],
       ),
     );
