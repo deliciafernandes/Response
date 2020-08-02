@@ -51,6 +51,7 @@ class _NewsBodyState extends State<NewsBody> {
 
     return Column(
       children: [
+        CustomAppBar(),
         Padding(
           padding: EdgeInsets.only(left: 20.0.w, top: 10.0.h, bottom: 10.0.h),
           child: Row(
