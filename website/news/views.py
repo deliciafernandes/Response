@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages,auth
+from django.contrib.auth import login, authenticate
 # from rest_framework import viewsets
 # from rest_framework.decorators import api_view
 from django.core import serializers
@@ -19,6 +20,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore,auth
 from urllib.parse import quote_plus
 from django.core.mail import send_mail
+from .models import MinistryNews
 
 cred = credentials.Certificate('news/disaster-alert-3f948-firebase-adminsdk-777fm-6f9d4a11b4.json')
 firebase_admin.initialize_app(cred)
@@ -46,7 +48,9 @@ for n in news:
 k = pd.DataFrame(l2,columns=['date','headline','description','share_link','image_url'])
 
 def homepage(request):
-    
+    #Ministry-news
+    queryset = MinistryNews.objects.all().order_by('-date')
+    print(queryset)
     #Subscribe-user
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -78,7 +82,7 @@ def homepage(request):
         data = k,
         columns = ['date','headline','description','share_link'] 
         )
-    return render(request,'news/base.html',context={'context1':context1,'context2':context2})
+    return render(request,'news/base.html',context={'context1':context1,'context2':context2, "query":queryset})
 
 
 

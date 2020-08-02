@@ -149,7 +149,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="tel:108">Emergency DIAL:  <i class="fa fa-phone"></i>  108</a></li>
                         
-                          <a href="#" class="section-btn" data-toggle="modal" data-target="#exampleModal1">Login </a>
+                          <a href="/admin/" class="section-btn">Login </a>
                         
                           <a href="#" class="section-btn" data-toggle="modal" data-target="#exampleModal"> Register</a>
                     </ul>
@@ -530,69 +530,17 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
                     <h2 id="news">Ministry News</h2>
                           <div class="holder">
                          <ul id="ticker01">
+                                                            
+                                                            {% for q in query %}
                                                             <li> 
                                                                 <div class="col-md-4">
-                                                                      <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
+                                                                      <img src="{{q.imageurl}}" alt="loading..." class="newsi">  
                                                                  </div>
                                                                  <div class="col-md-8">
-                                                                      <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
+                                                                      <span>{{q.date}}</span><a href="{{q.url}}">  <br> {{q.headline}}</a>
                                                                  </div> <br>
                                                             </li>
-
-                                                            <li> 
-                                                                 <div class="col-md-4">
-                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
-                                                                  </div>
-                                                                  <div class="col-md-8">
-                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
-                                                                  </div> <br>
-                                                             </li>
-
-                                                             <li> 
-                                                                 <div class="col-md-4">
-                                                                       <img src="{%static 'news/images/wildfires.jpg'%}
-                                                                       " alt="loading..." class="newsi">  
-                                                                  </div>
-                                                                  <div class="col-md-8">
-                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
-                                                                  </div> <br>
-                                                             </li>
-
-                                                             <li> 
-                                                                 <div class="col-md-4">
-                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
-                                                                  </div>
-                                                                  <div class="col-md-8">
-                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
-                                                                  </div> <br>
-                                                             </li>
-
-                                                             <li> 
-                                                                 <div class="col-md-4">
-                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
-                                                                  </div>
-                                                                  <div class="col-md-8">
-                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
-                                                                  </div> <br>
-                                                             </li>
-
-                                                             <li> 
-                                                                 <div class="col-md-4">
-                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
-                                                                  </div>
-                                                                  <div class="col-md-8">
-                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
-                                                                  </div> <br>
-                                                             </li>
-
-                                                             <li> 
-                                                                 <div class="col-md-4">
-                                                                       <img src="{%static 'news/images/wildfires.jpg'%}" alt="loading..." class="newsi">  
-                                                                  </div>
-                                                                  <div class="col-md-8">
-                                                                       <span>10/10/2007</span><a href="#">  <br> Corona virus invading the land of dawn.</a>
-                                                                  </div> <br>
-                                                             </li>
+                                                            {% endfor %}
                               </ul>
                        </div>
 

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -71,17 +73,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'disaster.wsgi.application'
 
+LOGIN_REDIRECT_URL='/admin/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
+DATABASE_URL = "postgres://dioyvytszfflyr:ad5bd814f43eab8d66c76a680fc59506c8665cfb99912d583004bc4a6a6b70d0@ec2-34-225-162-157.compute-1.amazonaws.com:5432/da5aik59rps3qh"
+DATABASES = {
+    'default': dj_database_url.config(
+        default=DATABASE_URL
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

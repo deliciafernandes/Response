@@ -3,3 +3,8 @@ from django.contrib import admin
 
 # Register your models here.
 # admin.site.register(relevance)
+
+
+from .models import MinistryNews
+
+admin.site.register(MinistryNews)
