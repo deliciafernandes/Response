@@ -58,15 +58,16 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="base.html" class="navbar-brand">Disaster<span>.</span> Management</a>
+                    <a href="#home" class="navbar-brand">Disaster<span>.</span> Management</a>
                </div>
 
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse" style="width: 110%;">
                     <ul class="nav navbar-nav navbar-nav-first">
-                         <li><a href="#home" class="smoothScroll">Home</a></li>
-                         <li><a href="#about" class="smoothScroll">About</a></li>
+                         <!-- <li><a href="#home" class="smoothScroll">Home</a></li> -->
+                         <li><a href="#prediction" class="smoothScroll">Predictions</a></li>
                          <li><a href="#news" class="smoothScroll">Alert</a></li>
+                         <li><a href="#about" class="smoothScroll">About</a></li>
                          <li><a href="#contact" class="smoothScroll">Contact</a></li>
                          <li><a href="#" class="red smoothScroll " style="color: rgb(211, 44, 44);"  data-toggle="modal" data-target="#donate" >Donate</a></li>
                     </ul>
@@ -658,7 +659,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
 
 
 <!-- prediction -->
-<section id="contact news" data-stellar-background-ratio="0.1" style="padding: 40px;">
+<section id="prediction" data-stellar-background-ratio="0.1" style="padding: 40px;">
           <div class="container wow fadeInUp"  data-wow-delay="0.1s"  style="padding: 0px;">
                <div class=" col-md-6 holder" style="padding: 0px; margin: 0px">
                      <h2>Predictions for Bad Weather</h2>
@@ -811,16 +812,17 @@ if(obj.error == null){
                           <div class="holder">
                          <ul id="ticker01">
                                                             
-                                                            {% for q in query %}
-                                                            <li> 
-                                                                <div class="col-md-4">
-                                                                      <img src="{{q.imageurl}}" alt="loading..." class="newsi">  
-                                                                 </div>
-                                                                 <div class="col-md-8">
-                                                                      <span>{{q.date}}</span><a href="{{q.url}}">  <br> {{q.headline}}</a>
-                                                                 </div> <br>
-                                                            </li>
-                                                            {% endfor %}
+                                        {% for q in query %}
+
+                                        <li> 
+                                            <div class="col-md-4">
+                                                  <img src="{{q.imageurl}}" alt="loading..." class="newsi">  
+                                             </div>
+                                             <div class="col-md-8">
+                                                  <span>{{q.date}}</span><a href="{{q.url}}">  <br> {{q.headline}}</a>
+                                             </div> <br>
+                                        </li>
+                                        {% endfor %}
                               </ul>
                        </div>
 
