@@ -48,6 +48,26 @@ for n in news:
 k = pd.DataFrame(l2,columns=['date','headline','description','share_link','image_url'])
 
 def homepage(request):
+
+    # #Real-time Updation
+    # callback_done = threading.Event()
+
+    # # Create a callback on_snapshot function to capture changes
+    # def on_snapshot(doc_snapshot, changes, read_time):
+    #     for doc in doc_snapshot:
+    #         print(f'Received document snapshot: {doc.id}')
+    #     callback_done.set()
+
+    #     doc_email = db.collection('Users').stream()
+    #     for d in doc_email
+
+    # doc_ref = db.collection(u'RealNews').stream()
+
+    # # Watch the document
+    # doc_watch = doc_ref.on_snapshot(on_snapshot)
+
+
+
     #Ministry-news
     queryset = MinistryNews.objects.all().order_by('-date')
     print(queryset)
@@ -130,9 +150,9 @@ def Relief_help(request):
         print(user_longitude,user_longitude)
     
         url = "https://www.fast2sms.com/dev/bulk"
-        message = 'ifoj'
-        number = phone
-        payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+contact
+        message = 'Hi, I am '+name + 'I need help! My location is ('+user_latitude + ',' + user_longitude + ')'
+        number = contact
+        payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+number
         headers = {
         'authorization': "FWLraiHjfoSUGcBeJuOT9sQNCdPbgpw4EXI63yD720ntMA8K51WV1Kw5NTikXExzIA6y74vHJSpClFMb",
         'Content-Type': "application/x-www-form-urlencoded",
@@ -157,7 +177,19 @@ def Relief_help2(request):
         print(name)
         print(contact)
         print(ngo)
-        print(user_longitude,user_longitude)  
+        print(user_longitude,user_longitude) 
+
+        url = "https://www.fast2sms.com/dev/bulk"
+        message = 'Hi, I am '+name + 'I need help! My location is ('+user_latitude + ',' + user_longitude + ')'
+        number = contact
+        payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+number
+        headers = {
+        'authorization': "FWLraiHjfoSUGcBeJuOT9sQNCdPbgpw4EXI63yD720ntMA8K51WV1Kw5NTikXExzIA6y74vHJSpClFMb",
+        'Content-Type': "application/x-www-form-urlencoded",
+        'Cache-Control': "no-cache",
+        }
+        response = requests.request("POST", url, data=payload, headers=headers)
+        print(response.text) 
 
     return render(request, 'news/base.html')
 
