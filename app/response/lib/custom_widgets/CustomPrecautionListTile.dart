@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomPrecautionListTile extends StatelessWidget {
   final String disaster;
@@ -62,14 +63,13 @@ class CustomPrecautionListTile extends StatelessWidget {
                       Icons.arrow_forward_ios,
                       color: Colors.white,
                     ),
-                    onPressed: () {
-////                              try {
-////                                await launch('https://immohann.github.io/Crisis-Management/${disaster}.html');
-////                              } catch (e) {
-////                                print(
-////                                    '$e : Could not launch ${widget.url} on DetailedNewsPage');
-////
-////                              }
+                    onPressed: () async {
+                      try {
+                        await launch(
+                            'https://immohann.github.io/Crisis-Management/$disaster.html');
+                      } catch (e) {
+                        print('$e : Could not launch urk on DetailedNewsPage');
+                      }
                     },
                   )
                 ],

@@ -14,7 +14,6 @@ import 'package:response/utilities/constants.dart';
 import 'package:share/share.dart' as ShareFunction;
 import 'package:url_launcher/url_launcher.dart';
 
-import 'HomePageDialogflow.dart';
 import 'MapsBody.dart';
 import 'NewsBody.dart';
 import 'WhatToDoBody.dart';
@@ -45,10 +44,9 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(),
-    HomePageDialogflow(),
   ];
 
-  int _index = 3;
+  int _index = 1;
 
   @override
   Widget build(BuildContext context) {

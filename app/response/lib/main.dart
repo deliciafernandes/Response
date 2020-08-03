@@ -56,27 +56,6 @@ class ResponseApp extends StatelessWidget {
         Earthquake.id: (context) => Earthquake(),
       },
       // List all of the app's supported locales here
-//      supportedLocales: [
-//        Locale('en', 'US'),
-//        Locale('hi', 'IN'),
-//        Locale('mr', 'IN'),
-//      ],
-//
-//      localizationsDelegates: [
-//        ApplicationLocalizations.delegate,
-//        GlobalMaterialLocalizations.delegate,
-//        GlobalWidgetsLocalizations.delegate,
-//      ],
-//
-//      localeResolutionCallback: (locale, supportedLocales) {
-//        for (var supportedLocaleLanguage in supportedLocales) {
-//          if (supportedLocaleLanguage.languageCode == locale.languageCode &&
-//              supportedLocaleLanguage.countryCode == locale.countryCode) {
-//            return supportedLocaleLanguage;
-//          }
-//        }
-//        return supportedLocales.first;
-//      },
     );
   }
 }
