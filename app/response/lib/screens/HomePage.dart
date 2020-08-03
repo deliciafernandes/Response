@@ -14,6 +14,7 @@ import 'package:response/utilities/constants.dart';
 import 'package:share/share.dart' as ShareFunction;
 import 'package:url_launcher/url_launcher.dart';
 
+import 'HomePageDialogflow.dart';
 import 'MapsBody.dart';
 import 'NewsBody.dart';
 import 'WhatToDoBody.dart';
@@ -44,6 +45,8 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(),
+//    MapsBody(),
+    HomePageDialogflow(),
   ];
 
   int _index = 1;
@@ -153,11 +156,8 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Hero(
-                    tag: 'logo',
-                    child: Image.asset('assets/images/logo.png',
-                        width: 150.0, height: 100.0),
-                  ),
+                  Image.asset('assets/images/logo.png',
+                      width: 150.0.w, height: 100.0.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -205,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         }).toList(),
                       ),
-                      SizedBox(height: 35.h),
+                      SizedBox(height: 20.h),
                       Center(
                         child: Text(
                           'Version 1.0.0',

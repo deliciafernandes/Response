@@ -64,9 +64,10 @@ class CustomPrecautionListTile extends StatelessWidget {
                       color: Colors.white,
                     ),
                     onPressed: () async {
+                      print(disaster);
                       try {
                         await launch(
-                            'https://immohann.github.io/Crisis-Management/$disaster.html');
+                            'https://immohann.github.io/Crisis-Management/earthquake.html');
                       } catch (e) {
                         print('$e : Could not launch urk on DetailedNewsPage');
                       }
