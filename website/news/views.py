@@ -130,9 +130,9 @@ def Relief_help(request):
         print(user_longitude,user_longitude)
     
         url = "https://www.fast2sms.com/dev/bulk"
-        message = 'ifoj'
-        number = phone
-        payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+contact
+        message = 'Hi, I am '+name + 'I need help! My location is ('+user_latitude + ',' + user_longitude + ')'
+        number = contact
+        payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+number
         headers = {
         'authorization': "FWLraiHjfoSUGcBeJuOT9sQNCdPbgpw4EXI63yD720ntMA8K51WV1Kw5NTikXExzIA6y74vHJSpClFMb",
         'Content-Type': "application/x-www-form-urlencoded",
@@ -157,7 +157,19 @@ def Relief_help2(request):
         print(name)
         print(contact)
         print(ngo)
-        print(user_longitude,user_longitude)  
+        print(user_longitude,user_longitude) 
+
+        url = "https://www.fast2sms.com/dev/bulk"
+        message = 'Hi, I am '+name + 'I need help! My location is ('+user_latitude + ',' + user_longitude + ')'
+        number = contact
+        payload = "sender_id=FSTSMS&message="+message+"&language=english&route=p&numbers="+number
+        headers = {
+        'authorization': "FWLraiHjfoSUGcBeJuOT9sQNCdPbgpw4EXI63yD720ntMA8K51WV1Kw5NTikXExzIA6y74vHJSpClFMb",
+        'Content-Type': "application/x-www-form-urlencoded",
+        'Cache-Control': "no-cache",
+        }
+        response = requests.request("POST", url, data=payload, headers=headers)
+        print(response.text) 
 
     return render(request, 'news/base.html')
 
