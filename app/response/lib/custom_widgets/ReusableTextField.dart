@@ -5,7 +5,6 @@ class ReusableTextField extends StatefulWidget {
   final String hintText;
   final String errorText;
   final TextInputType keyboardType;
-  final TextEditingController controller;
   final Function onChanged;
   final IconData icon;
 
@@ -14,7 +13,6 @@ class ReusableTextField extends StatefulWidget {
       this.errorText,
       this.keyboardType,
       this.onChanged,
-      this.controller,
       this.icon});
 
   @override
@@ -28,7 +26,6 @@ class _ReusableTextFieldState extends State<ReusableTextField> {
     return Stack(
       children: [
         TextField(
-          controller: widget.controller,
           style: TextStyle(color: Color.fromRGBO(38, 50, 56, .50)),
           keyboardType: widget.keyboardType,
           obscureText: widget.keyboardType == TextInputType.visiblePassword

@@ -21,46 +21,42 @@ class _SubscriptionBottomModalSheetState
     String phoneNumber = '';
     String name = '';
 
-    TextEditingController _nameController = TextEditingController();
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _phoneNumberController = TextEditingController();
-
     bool _isClicked = false;
 
     final _firestore = Firestore.instance;
 
-    String _validateName(String value) {
-      if (value.isEmpty) {
-        return 'Please enter a Name ';
-      }
-      return null;
-    }
-
-    String _validateEmail(String value) {
-      if (value.isEmpty) {
-        return 'Please enter an Email Address';
-      } else if (!validator.isEmail(email)) {
-        return 'Please enter a valid Email';
-      }
-      return null;
-    }
-
-    String validatePhoneNum(String value) {
-      String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-      RegExp regExp = RegExp(pattern);
-
-      if (value.contains('+91', 0)) {
-        return null;
-      } else {
-        if (value.isEmpty) {
-          return 'Please enter a phone number';
-        } else if (!regExp.hasMatch(value)) {
-          return 'Please enter a valid phone number';
-        }
-      }
-
-      return null;
-    }
+//    String _validateName(String value) {
+//      if (value.isEmpty) {
+//        return 'Please enter a Name ';
+//      }
+//      return null;
+//    }
+//
+//    String _validateEmail(String value) {
+//      if (value.isEmpty) {
+//        return 'Please enter an Email Address';
+//      } else if (!validator.isEmail(email)) {
+//        return 'Please enter a valid Email';
+//      }
+//      return null;
+//    }
+//
+//    String validatePhoneNum(String value) {
+//      String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+//      RegExp regExp = RegExp(pattern);
+//
+//      if (value.contains('+91', 0)) {
+//        return null;
+//      } else {
+//        if (value.isEmpty) {
+//          return 'Please enter a phone number';
+//        } else if (!regExp.hasMatch(value)) {
+//          return 'Please enter a valid phone number';
+//        }
+//      }
+//
+//      return null;
+//    }
 
     ScreenUtil.init(
       context,
@@ -68,7 +64,6 @@ class _SubscriptionBottomModalSheetState
       height: 667.0,
       allowFontScaling: true,
     );
-
     return Container(
       padding: EdgeInsets.all(25.0.w),
       margin: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 20.0.h),
@@ -105,7 +100,7 @@ class _SubscriptionBottomModalSheetState
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Subscribe',
+                _isClicked ? 'DONE' : 'Subscribe',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: ScreenUtil().setSp(30.0),
@@ -128,8 +123,9 @@ class _SubscriptionBottomModalSheetState
                 hintText: 'Name',
                 icon: Icons.face,
                 keyboardType: TextInputType.name,
-                controller: _nameController,
-                errorText: _isClicked ? _validateName(name) : null,
+                errorText: _isClicked
+                    ? (name.isEmpty ? 'Please input your name' : null)
+                    : null,
                 onChanged: (value) {
                   name = value;
                 },
@@ -139,8 +135,9 @@ class _SubscriptionBottomModalSheetState
                 hintText: 'Email',
                 icon: Icons.email,
                 keyboardType: TextInputType.emailAddress,
-                controller: _emailController,
-                errorText: _isClicked ? _validateEmail(email) : null,
+                errorText: _isClicked
+                    ? (email.isEmpty ? 'Please input your email' : null)
+                    : null,
                 onChanged: (value) {
                   email = value.trim();
                 },
@@ -150,8 +147,9 @@ class _SubscriptionBottomModalSheetState
                 hintText: 'Phone no.',
                 keyboardType: TextInputType.number,
                 icon: Icons.phone,
-                controller: _phoneNumberController,
-                errorText: _isClicked ? validatePhoneNum(phoneNumber) : null,
+                errorText: _isClicked
+                    ? (phoneNumber.isEmpty ? 'Please input your name' : null)
+                    : null,
                 onChanged: (value) {
                   phoneNumber = value.trim();
                 },
@@ -164,11 +162,7 @@ class _SubscriptionBottomModalSheetState
                 children: [
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        _nameController.clear();
-                        _phoneNumberController.clear();
-                        _emailController.clear();
-                      });
+                      setState(() {});
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(
@@ -189,7 +183,9 @@ class _SubscriptionBottomModalSheetState
                   ),
                   GestureDetector(
                     onTap: () {
+                      print(_isClicked);
                       setState(() {
+                        _isClicked = true;
                         try {
                           _firestore.collection('Users').add({
                             'contact': phoneNumber,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:response/custom_widgets/CustomAppBar.dart';
 
 class HomePageDialogflow extends StatefulWidget {
   HomePageDialogflow({Key key, this.title}) : super(key: key);
@@ -81,11 +82,8 @@ class _HomePageDialogflow extends State<HomePageDialogflow> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        centerTitle: true,
-        title: new Text("Flutter and Dialogflow"),
-      ),
       body: new Column(children: <Widget>[
+        CustomAppBar(),
         new Flexible(
             child: new ListView.builder(
           padding: new EdgeInsets.all(8.0),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:response/Flood.dart';
 import 'package:response/screens/DetailedNewsPage.dart';
 import 'package:response/screens/MapsBody.dart';
 import 'package:response/screens/OnboardingScreen.dart';
@@ -8,10 +9,9 @@ import 'package:flutter/services.dart';
 import 'package:response/screens/SOS.dart';
 import 'package:response/screens/SOSselect.dart';
 import 'package:response/screens/WhatToDoBody.dart';
+import 'package:response/test.dart';
 import 'screens/NewsBody.dart';
 import 'screens/HomePage.dart';
-
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -36,6 +36,7 @@ class ResponseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+//      home: HomePage1(),
       initialRoute: HomePage.id,
       routes: {
         OnboardingScreen.id: (context) => OnboardingScreen(),
@@ -45,6 +46,7 @@ class ResponseApp extends StatelessWidget {
         WhatToDoBody.id: (context) => WhatToDoBody(),
         NewsBody.id: (context) => NewsBody(),
         MapsBody.id: (context) => MapsBody(),
+        Flood.id: (context) => Flood(),
 
         //SOS page
         SOS.id: (context) => SOS(),

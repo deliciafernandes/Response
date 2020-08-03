@@ -45,7 +45,6 @@ class _HomePageState extends State<HomePage> {
     WhatToDoBody(),
     NewsBody(),
     MapsBody(),
-//    MapsBody(),
     HomePageDialogflow(),
   ];
 
@@ -248,8 +247,7 @@ class _HomePageState extends State<HomePage> {
               title: Text('Map', style: TextStyle(fontFamily: 'WorkSans'))),
           BottomNavigationBarItem(
               icon: Icon(DrawerIcon.speak),
-              title:
-                  Text('Settings', style: TextStyle(fontFamily: 'WorkSans'))),
+              title: Text('ChatBot', style: TextStyle(fontFamily: 'WorkSans'))),
         ],
       ),
     );

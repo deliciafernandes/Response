@@ -38,7 +38,7 @@ class CustomSOSTile extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           ShareFunction.Share.share(
-              "Hi, Right now I am in a disaster zone of Earthquake, Please help me, My location is Pipeline road, Andheri east, call an ambulance at my location. The nearest hospital is HolySpirit hospital, Mahakali east and contact no of it is  022 2824 8500 . Thank you.",
+              "Hi Vinit, Right now I am in a Flood disaster zone, Please help me, My location is Jp road, Andheri East, Mumbai. Call an ambulance at my location. The nearest hospital is HolySpirit hospital, Mahakali east and contact no of it is  02228248500 . Thank you.",
               subject: 'Message from Response App');
         },
         child: Material(
