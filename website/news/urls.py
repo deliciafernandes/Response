@@ -20,7 +20,6 @@ urlpatterns = [
     path('first-aid/',views.first_aid, name='first-aid'),
     path('relief/',views.Relief_help, name='rel-help'),
     path('relief2/',views.Relief_help2, name='rel-help2'),
-    # path("subscribe/", views.subscribe, name="subscribe"),
     path('email/',views.test_email,name='test_email')
-    # path('api/',include(router.urls)),
+    
 ]
