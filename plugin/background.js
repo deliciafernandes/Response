@@ -14,29 +14,54 @@ var auth = firebase.auth();
 var db = firebase.firestore();
 
 
-
 db.collection("RealNews").orderBy("date", "desc").limit(1)
-    .get()
-    .then(function(querySnapshot) {
+    .onSnapshot(function(querySnapshot) {
+        var news = [];
         querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            document.getElementById('data').innerHTML = doc.data().headline;        
-        news = {
+          document.getElementById('data').innerHTML = doc.data().headline;
+          document.getElementById('data').href = doc.data().url;
+            news.push(doc.data().headline);
+
+            news = {
           type : "basic", 
           iconUrl: "icon_new.png",
           title : "Latest News Alerts",
-          message : doc.data().headline + doc.data().url
+          message : doc.data().headline + 
+                    doc.data().url
           };
 
           chrome.notifications.create(news,callback );
 
-            console.log(doc.id, " => ", doc.data());
         });
-    })
-    .catch(function(error) {
-
-        console.log("Error getting documents: ", error);
+        
     });
+
+
+
+
+// db.collection("RealNews")get()
+//     .onSnapshot(function(doc) {
+//         var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+//         console.log(source, " data: ", doc.data());
+//         
+//     });
+
+
+
+// db.collection("RealNews")
+//     .get()
+//     .then(function(querySnapshot) {
+//         querySnapshot.forEach(function(doc) {
+//             // doc.data() is never undefined for query doc snapshots
+//                     
+        
+//             console.log(doc.id, " => ", doc.data());
+//         });
+//     })
+//     .catch(function(error) {
+
+//         console.log("Error getting documents: ", error);
+//     });
 
           
 

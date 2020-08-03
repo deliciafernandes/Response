@@ -59,7 +59,10 @@ def homepage(request):
     #     callback_done.set()
 
     #     doc_email = db.collection('Users').stream()
-    #     for d in doc_email
+    #     for d in doc_email:
+            # data = d.to_dict()
+            # email = data['email']
+            # send_mail(doc.title,doc.description,'dsouza.kevin952@gmail.com',[email],fail_silently=False)
 
     # doc_ref = db.collection(u'RealNews').stream()
 
