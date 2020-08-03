@@ -1,4 +1,4 @@
-# Response
+# Response ⚠️ 📱
 
 A Cross Platform Mobile Application for disaster management
 
@@ -6,12 +6,10 @@ A Cross Platform Mobile Application for disaster management
 
 Splash Screen -> Homepage
 
-> To do:
-1. Localization
-2. Shared Preferences for JSON data collection
-
-> Remember to do:
-1. Terms & Conditions screen
+> To try/use the Response App yourself:
+1. Download the app-release.apk in your mobile device(android or iOS(iphone and ipad))
+2. Install the app
+3. Ready to use 😊
 
 Images used:
 1. Pandemic Image by <a href="https://pixabay.com/users/Tumisu-148124/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4914028">Tumisu</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4914028">Pixabay</a>
