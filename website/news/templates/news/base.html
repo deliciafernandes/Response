@@ -31,86 +31,11 @@
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4nyMP_pwA&callback=initMap&libraries=places">
 </script>
      
-<!-- MAP MIAN SCRIPT -->
-<script>
-
-     // THIS IS THE ONE FOR FETCHING LONGITUDE AND LATITUDE 
-     
-          navigator.geolocation.getCurrentPosition(function(position) {
-                    var lon=position.coords.longitude;
-                    var lat=position.coords.latitude;
-                    // alert(lon);
-                    document.getElementById("lon").value = lon;
-                    document.getElementById("lat").value = lat;  
-                    });
-          
-     
-     
-     
-     // THIS IS THE TO DISPLAY LOCATIONS.
-     (function(exports) {
-               // "use strict";
-                    function initMap() {
-          
-               
-
-                    var lat=Number(document.getElementById("lat").value);
-                    var lon=Number(document.getElementById("lon").value);
-      
-     
-                    var sydney = new google.maps.LatLng(lat, lon);
-                    exports.infowindow = new google.maps.InfoWindow();
-                    exports.map = new google.maps.Map(document.getElementById("map"), {
-                    center: sydney,
-                    zoom: 15
-                    });
-                    var request = {
-                    location: sydney,
-                    radius: '2000',
-               type: ['hospital']
-                    };
-                    exports.service = new google.maps.places.PlacesService(exports.map);
-                    exports.service.nearbySearch(request, function(
-                    results,
-                    status
-                    ) {
-                    if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < results.length; i++) {
-                         createMarker(results[i]);
-                    }
-          
-                    exports.map.setCenter(results[0].geometry.location);
-                    }
-                    });
-             }
-     
-     function createMarker(place) {
-               var marker = new google.maps.Marker({
-               map: exports.map,
-               position: place.geometry.location
-               });
-               google.maps.event.addListener(marker, "click", function() {
-               exports.infowindow.setContent(place.name);
-               exports.infowindow.open(exports.map, this);
-               });
-               }
-     
-             exports.createMarker = createMarker;
-             exports.initMap = initMap;
-           })((this.window = this.window || {}));
-     
-     
-     
-     
-</script>
-
+    
 
 </head>
 <body >
-
-
-    
-    
+ 
      <!-- PRE LOADER -->
      <section class="preloader">
           <div class="spinner">
@@ -318,13 +243,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
 
 
 <!-- chatbot ----------------------------------------------------------->
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"> </script>
-     <df-messenger
-       intent="WELCOME"
-       chat-title="Response"
-       agent-id="b9478ac3-83a8-4045-994e-cc519a59eae8"
-       language-code="en"
-     ></df-messenger>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"></script>
+         <df-messenger
+           intent="WELCOME"
+           chat-title="Response"
+           agent-id="b9478ac3-83a8-4045-994e-cc519a59eae8"
+           language-code="en"
+         ></df-messenger>
 <!-- ------------------------------------------------------------------->
      
      <!-- Ambulance Modal -->
@@ -765,9 +690,9 @@ for(x in cities){
 
 var response = httpGet(url);
 var obj = JSON.parse(response);
-console.log(obj);
+// console.log(obj);
 
-console.log(obj.alerts.alerts[0]);
+// console.log(obj.alerts.alerts[0]);
 
 
 var country =  obj.alerts.country;
@@ -778,15 +703,15 @@ var lon = obj.alerts.longitude;
 var timezone = obj.feedCreation;
 var description = obj.alerts.alerts[0].description;
     
-console.log(country);
-console.log(state);
-console.log(city);
-console.log(lat);
-console.log(lon);
-console.log(timezone);
-console.log(description);
+// console.log(country);
+// console.log(state);
+// console.log(city);
+// console.log(lat);
+// console.log(lon);
+// console.log(timezone);
+// console.log(description);
 
-console.log(obj.alerts.alerts[0].timeSegment.length);
+// console.log(obj.alerts.alerts[0].timeSegment.length);
 
 var par = document.getElementById("alert");
 
@@ -937,14 +862,116 @@ var newChild = '<li class="pred">\
  
 
 <!-- Maps -->
+
+<style type="text/css">
+
+#map {
+  height: 500px;
+  margin: 10px auto;
+  width: 800px;
+}
+  </style>
+
+  <script type="text/javascript">
+    
+    var map;
+
+function initMap() {
+    // Create the map.
+    var pyrmont = {
+        lat: 23.8701334,
+        lng: 90.2713944
+    };
+
+    function getLocation3() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition3);
+        } else { 
+          alert("Geolocation is not supported by this browser");
+        }
+      }
+
+    function showPosition3(position) {
+      
+      var pyrmont = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    };
+        
+
+        console.log(pyrmont);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 17
+    });
+
+    // Create the places service.
+    var service = new google.maps.places.PlacesService(map);
+
+    // Perform a nearby search.
+    service.nearbySearch({
+            location: pyrmont,
+            radius: 4000,
+            type: ['hospital']
+        },
+        function(results, status, pagination) {
+            if (status !== 'OK') return;
+
+            createMarkers(results);
+            getNextPage = pagination.hasNextPage && function() {
+                pagination.nextPage();
+            };
+        });
+    
+
+
+    }
+
+    getLocation3(); 
+
+    
+}
+
+function createMarkers(places) {
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0, place; place = places[i]; i++) {
+        var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+        };
+
+        var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location
+        });
+        bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+}
+  </script>
+
+
+
+
 <div class="section-title wow fadeInUp" data-wow-delay="0.1s" style="text-align: center; padding-top: 4%;">
      <h2 id="mapp">Nearby Healthcare Centers</h2>
      
 </div>
  <div id="map" class="section-title wow fadeInUp" data-wow-delay="0.1s" >     
-     <input type="number" id="lat" value=0>
-     <input type="number" id="lon" value=0>
+    <!-- s -->
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4nyMP_pwA&libraries=places&callback=initMap" async defer></script>
+
+
 </div>
+
+
 
 
      <!-- ABOUT -->
