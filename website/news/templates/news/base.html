@@ -602,15 +602,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
 
 <script>
 
-                  // function httpGet(theUrl)
-                  // {
-                  //     var xmlHttp = new XMLHttpRequest();
-                  //     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-                  //     xmlHttp.send( null );
-                  //     return xmlHttp.responseText;
-                  // }
-
-                  // var x = document.getElementById("demo");
 
                   function getLocation2() {
                     if (navigator.geolocation) {
@@ -669,13 +660,21 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
 <!-- prediction -->
 <section id="contact news" data-stellar-background-ratio="0.1" style="padding: 40px;">
           <div class="container wow fadeInUp"  data-wow-delay="0.1s"  style="padding: 0px;">
-               <div class=" col-md-12 holder" style="padding: 0px; margin: 0px">
+               <div class=" col-md-6 holder" style="padding: 0px; margin: 0px">
                      <h2>Predictions for Bad Weather</h2>
+   
    <ul id='alert'style="font-size: 10px; font-weight: 100; ">
   
    </ul>
+   </div>
 
+   <div class=" col-md-6 holder" style="padding-left: 3%; margin: 0px">
+    <h2>Predictions for EarthQuakes</h2>
+   <ul id='alert2'style="font-size: 10px; font-weight: 100; ">
+  
+   </ul>
 
+ </div>
  <script type="text/javascript">
     function httpGet(theUrl)
 {
@@ -720,8 +719,6 @@ var description = obj.alerts.alerts[0].description;
 
 var par = document.getElementById("alert");
 
-
-
 var newChild = '<li class="pred">\
 <p class="pred">'+city+', '+state+', '+country+'</p>\
 <p>'+timezone+'</p>\
@@ -730,9 +727,43 @@ var newChild = '<li class="pred">\
  par.insertAdjacentHTML('beforeend',newChild);
   
 }
+
+
+//For Earthquakes
+
+var par2 = document.getElementById("alert2");
+
+var url2 = "https://api.aerisapi.com/earthquakes/india?&format=json&filter=all&client_id=QbZrp9nhlBXhZY5BXsC2v&client_secret=SJl5h3fGEzD8hXE6W7IZavaEyu0VRsVQ2DCO69TS";
+
+response = httpGet(url2);
+obj = JSON.parse(response);
+// console.log(obj);
+
+if(obj.error == null){
+
+  for( r in obj.response){
+    var location = obj.response[r].report.location;
+    var type = obj.response[r].report.type;
+    var date = obj.response[r].report.dateTimeISO;
+
+    var newChild2 = '<li class="pred">\
+    <p class="pred">'+location+'</p>\
+    <p>'+date+'</p>\
+    <p>' + type + '</p>\
+    </li>';
+     par2.insertAdjacentHTML('beforeend',newChild2);
+      
+  }
+}else{
+  var newChild2 = '<h3>Youre safe, no Earthquakes around you.</h3>';
+     par2.insertAdjacentHTML('beforeend',newChild2);
+}
+
+
+
+
    </script>
-               </div>
-               
+                              
 
      </section>          
 <div class="modal fade" id="news1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
