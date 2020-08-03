@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:response/models/OnboardingModel.dart';
-import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -21,7 +20,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       list.add(PageViewModel(
         title: onboard.getTitle(i),
         body: onboard.getInfo(i),
-        image: Image.asset(onboard.getImage(i)),
       ));
     }
     return list;
@@ -37,6 +35,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
 
     return IntroductionScreen(
+      globalBackgroundColor: Colors.transparent,
       key: introKey,
       pages: pagesList(),
       onDone: () => Navigator.pop(context),
@@ -47,20 +46,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         'Skip',
         style: TextStyle(
           fontFamily: 'Merriweather',
+          color: Colors.white,
         ),
       ),
-      next: Icon(Icons.arrow_forward),
+      next: Icon(Icons.arrow_forward, color: Colors.white),
       done: Text(
         'Done',
         style: TextStyle(
           fontWeight: FontWeight.w600,
           fontFamily: 'Merriweather',
+          color: Colors.white,
         ),
       ),
       dotsDecorator: DotsDecorator(
         size: Size(10.0.w, 10.0.w),
-        color: kLightPinkColor,
-        activeColor: kDarkPinkRedColor,
+        color: Colors.white24,
+        activeColor: Colors.white,
         activeSize: Size(22.0.w, 10.0.w),
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(25.0.w)),

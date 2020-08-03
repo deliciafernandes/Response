@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:response/custom_icons/emergency_icons.dart';
+import 'package:response/screens/SOS.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,8 +36,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
             style: kCustomAppBarResponseLogoTextStyle,
           ),
           IconButton(
-            icon: Icon(Icons.settings, size: 20.0.w, color: Colors.black),
-            onPressed: () {},
+            icon: Icon(Emergency.warning, size: 20.0.w, color: Colors.black),
+            onPressed: () {
+              Navigator.pushNamed(context, SOS.id);
+            },
           ),
         ],
       ),

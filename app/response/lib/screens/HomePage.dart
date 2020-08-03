@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _widgetList = [
     WhatToDoBody(),
     NewsBody(),
-    MapsBody(), //TODO
     MapsBody(), //todo settings screen
   ];
 
