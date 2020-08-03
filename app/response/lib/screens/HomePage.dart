@@ -43,8 +43,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _widgetList = [
     WhatToDoBody(),
     NewsBody(),
-    MapsBody(), //TODO
-    MapsBody(), //todo settings screen
+    MapsBody(),
   ];
 
   int _index = 1;
@@ -248,7 +247,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Maps.location),
               title: Text('Map', style: TextStyle(fontFamily: 'WorkSans'))),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
+              icon: Icon(DrawerIcon.speak),
               title:
                   Text('Settings', style: TextStyle(fontFamily: 'WorkSans'))),
         ],

@@ -12,6 +12,8 @@ import 'package:response/screens/WhatToDoBody.dart';
 import 'screens/NewsBody.dart';
 import 'screens/HomePage.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -53,6 +55,7 @@ class ResponseApp extends StatelessWidget {
         DetailedNewsPage.id: (context) => DetailedNewsPage(),
         Earthquake.id: (context) => Earthquake(),
       },
+      // List all of the app's supported locales here
     );
   }
 }

@@ -3,6 +3,8 @@ import 'package:geocoder/geocoder.dart';
 
 class LocationService {
   String _userLocation = 'INDIA';
+  double latitude;
+  double longitude;
 
   Future<String> getLocation() async {
     try {
@@ -36,6 +38,29 @@ class LocationService {
     } catch (e) {
       print('$e       : occurred in LocationService.dart');
       return _userLocation;
+    }
+  }
+
+  Future<double> getLat() async {
+    try {
+      Position position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+
+      return position.latitude;
+    } catch (e) {
+      return 20.5937;
+    }
+  }
+
+  Future<double> getLong() async {
+    try {
+      Position position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+
+      return position.longitude;
+    } catch (e) {
+      return 78.9629;
+      print(e);
     }
   }
 }
