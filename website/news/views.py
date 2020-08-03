@@ -14,6 +14,9 @@ from django.core.mail import send_mail
 import requests
 import threading
 
+from django.contrib.auth import login, authenticate
+from .models import MinistryNews
+
 cred = credentials.Certificate('news/disaster-alert-3f948-firebase-adminsdk-777fm-6f9d4a11b4.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -37,7 +40,9 @@ for n in news:
 k = pd.DataFrame(l2,columns=['date','headline','description','share_link','image_url'])
 
 def homepage(request):
-
+    #Ministry-news
+    queryset = MinistryNews.objects.all().order_by('-date')
+    print(queryset)
         #Real-time Updation
     callback_done = threading.Event()
 
@@ -122,7 +127,7 @@ def homepage(request):
         context3 = dict(
             mess = message
             )
-    return render(request,'news/base.html',context={'context1':context1,'context2':context2,'context3':context3})
+    return render(request,'news/base.html',context={'context1':context1,'context2':context2,'context3':context3,'query':queryset})
 
 
 
