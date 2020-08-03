@@ -241,8 +241,16 @@ class _DetailedNewsPageState extends State<DetailedNewsPage>
                           ),
                         ),
                         child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, Earthquake.id);
+                          onTap: () async {
+                            try {
+                              await launch(
+                                  'https://immohann.github.io/Crisis-Management/${widget.distype}.html');
+                            } catch (e) {
+                              print(
+                                  '$e : Could not launch ${widget.url} on DetailedNewsPage');
+
+                              Scaffold.of(context).showSnackBar(snackBar);
+                            }
                           },
                           child: Container(
                             height: 30.0.h,

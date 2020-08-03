@@ -63,7 +63,13 @@ class CustomPrecautionListTile extends StatelessWidget {
                       color: Colors.white,
                     ),
                     onPressed: () {
-//                      Navigator.pushNamed(context, disaster.id); //TODO : Add onPressed!
+////                              try {
+////                                await launch('https://immohann.github.io/Crisis-Management/${disaster}.html');
+////                              } catch (e) {
+////                                print(
+////                                    '$e : Could not launch ${widget.url} on DetailedNewsPage');
+////
+////                              }
                     },
                   )
                 ],

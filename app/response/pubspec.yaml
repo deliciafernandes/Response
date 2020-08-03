@@ -40,6 +40,7 @@ dependencies:
 #  pin_code_fields: ^4.0.0
 
   provider: ^4.3.1
+  flutter_dialogflow: ^0.1.2
   firebase_core: ^0.4.5
   cloud_firestore: ^0.13.7
   firebase_auth: ^0.16.1
@@ -54,9 +55,10 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - language/en.json
-    - language/hi.json
-    - language/mr.json
+    - assets/json/credentials.json
+#    - language/en.json
+#    - language/hi.json
+#    - language/mr.json
 
   fonts:
     - family: BungeeShade

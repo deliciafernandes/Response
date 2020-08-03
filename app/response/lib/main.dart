@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:response/screens/DetailedNewsPage.dart';
 import 'package:response/screens/MapsBody.dart';
 import 'package:response/screens/OnboardingScreen.dart';
@@ -10,9 +9,10 @@ import 'package:response/screens/PrecautionScreens/earthquake.dart';
 import 'package:response/screens/SOS.dart';
 import 'package:response/screens/SOSselect.dart';
 import 'package:response/screens/WhatToDoBody.dart';
-import 'resources/application_localizations.dart';
 import 'screens/NewsBody.dart';
 import 'screens/HomePage.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -56,27 +56,27 @@ class ResponseApp extends StatelessWidget {
         Earthquake.id: (context) => Earthquake(),
       },
       // List all of the app's supported locales here
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('hi', 'IN'),
-        Locale('mr', 'IN'),
-      ],
-
-      localizationsDelegates: [
-        ApplicationLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocaleLanguage in supportedLocales) {
-          if (supportedLocaleLanguage.languageCode == locale.languageCode &&
-              supportedLocaleLanguage.countryCode == locale.countryCode) {
-            return supportedLocaleLanguage;
-          }
-        }
-        return supportedLocales.first;
-      },
+//      supportedLocales: [
+//        Locale('en', 'US'),
+//        Locale('hi', 'IN'),
+//        Locale('mr', 'IN'),
+//      ],
+//
+//      localizationsDelegates: [
+//        ApplicationLocalizations.delegate,
+//        GlobalMaterialLocalizations.delegate,
+//        GlobalWidgetsLocalizations.delegate,
+//      ],
+//
+//      localeResolutionCallback: (locale, supportedLocales) {
+//        for (var supportedLocaleLanguage in supportedLocales) {
+//          if (supportedLocaleLanguage.languageCode == locale.languageCode &&
+//              supportedLocaleLanguage.countryCode == locale.countryCode) {
+//            return supportedLocaleLanguage;
+//          }
+//        }
+//        return supportedLocales.first;
+//      },
     );
   }
 }
