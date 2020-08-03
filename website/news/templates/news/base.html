@@ -243,8 +243,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4
 
 
 <!-- chatbot ----------------------------------------------------------->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1%22%3E"></script>
-         <df-messenger
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="ResponseBot"
+  agent-id="e0427604-a4d5-4dde-aaf8-68748977f295"
+  language-code="en"
+></df-messenger>         <df-messenger
            intent="WELCOME"
            chat-title="Response"
            agent-id="b9478ac3-83a8-4045-994e-cc519a59eae8"
