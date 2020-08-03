@@ -5,7 +5,6 @@ import 'package:response/screens/DetailedNewsPage.dart';
 import 'package:response/screens/MapsBody.dart';
 import 'package:response/screens/OnboardingScreen.dart';
 import 'package:flutter/services.dart';
-import 'package:response/screens/PrecautionScreens/earthquake.dart';
 import 'package:response/screens/SOS.dart';
 import 'package:response/screens/SOSselect.dart';
 import 'package:response/screens/WhatToDoBody.dart';
@@ -53,7 +52,7 @@ class ResponseApp extends StatelessWidget {
 
         //Detailed Screens
         DetailedNewsPage.id: (context) => DetailedNewsPage(),
-        Earthquake.id: (context) => Earthquake(),
+//        Earthquake.id: (context) => Earthquake(),
       },
       // List all of the app's supported locales here
     );
