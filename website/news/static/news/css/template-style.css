@@ -488,7 +488,11 @@ section {
   border-top:solid 1px;
 
 }
+.holder .pred ul li {
+" margin: 60px;
+  border-top:solid 1px;
 
+}
 
 .m-img{
 width: 10%;
