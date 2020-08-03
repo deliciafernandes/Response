@@ -11,15 +11,18 @@ class OnboardingPage {
     OnboardingPageModel(
         image: 'assets/images/news.png',
         title: 'DISASTER NEWS',
-        info: 'Based on your location, Response shows relevant news.'),
+        info:
+            'Based on your location, Response shows national and local news on News Screen'),
     OnboardingPageModel(
         image: 'assets/images/doctors.png',
-        title: 'HELPLINE FACILITIES',
-        info: 'Locate closest helpline facilities in your periphery.'),
+        title: 'HEALTH CARE FACILITIES',
+        info:
+            'Be prepared before, during and after a disaster with steps from top doctors'),
     OnboardingPageModel(
         image: 'assets/images/map.png',
         title: 'MAP SERVICES',
-        info: 'Be informed of any incoming fatal situations via gps.'),
+        info:
+            'Locate closest helpline facilities in your periphery & be informed of any incoming fatal situations via gps.'),
     OnboardingPageModel(
         image: 'assets/images/sos.png',
         title: 'SOS BUTTON',

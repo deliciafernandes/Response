@@ -143,14 +143,6 @@
 //                    width: _width / 1.2,
 //                    child: Column(
 //                      children: [
-//                        ReusableTextField(
-//                          hintText: 'Email',
-//                          keyboardType: TextInputType.emailAddress,
-//                          errorText: _isClicked ? _validateEmail(email) : null,
-//                          onChanged: (value) {
-//                            email = value.trim();
-//                          },
-//                        ),
 //                        SizedBox(height: 40.0),
 //                        ReusableTextField(
 //                          hintText: 'Password',
@@ -176,9 +168,7 @@
 //                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
 //                    ),
 //                    onPressed: () async {
-//                      setState(() {
-//                        _isClicked = true;
-//                      });
+
 //                      try {
 //                        setState(() {
 //                          _showSpinner = true;

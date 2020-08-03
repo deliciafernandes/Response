@@ -334,16 +334,7 @@
 //                  left: _width / 11,
 //                  child: Container(
 //                    width: _width / 1.2,
-//                    child: ReusableTextField(
-//                      hintText: 'Phone no.',
-//                      keyboardType: TextInputType.number,
-//                      controller: _phoneNumberController,
-//                      errorText:
-//                          _isClicked ? validatePhoneNum(phoneNumber) : null,
-//                      onChanged: (value) {
-//                        phoneNumber = value.trim();
-//                      },
-//                    ),
+//                    child: ,
 //                  ),
 //                ),
 //                Positioned(

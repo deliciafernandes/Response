@@ -4,8 +4,6 @@ import 'package:response/models/OnboardingModel.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'HomePage.dart';
-
 class OnboardingScreen extends StatefulWidget {
   static String id = '/Onboarding2';
 
@@ -41,13 +39,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return IntroductionScreen(
       key: introKey,
       pages: pagesList(),
-      onDone: () => Navigator.pushNamed(context, HomePage.id),
+      onDone: () => Navigator.pop(context),
       showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
-      skip: Text('Skip'),
+      skip: Text(
+        'Skip',
+        style: TextStyle(
+          fontFamily: 'Merriweather',
+        ),
+      ),
       next: Icon(Icons.arrow_forward),
-      done: Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: Text(
+        'Done',
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Merriweather',
+        ),
+      ),
       dotsDecorator: DotsDecorator(
         size: Size(10.0.w, 10.0.w),
         color: kLightPinkColor,

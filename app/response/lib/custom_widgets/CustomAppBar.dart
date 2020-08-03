@@ -25,11 +25,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: Icon(Icons.menu, size: 20.0.w, color: Colors.black),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
+              icon: Icon(Icons.menu, size: 20.0.w, color: Colors.black),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              }),
           Text(
             'RESPONSE',
             style: kCustomAppBarResponseLogoTextStyle,

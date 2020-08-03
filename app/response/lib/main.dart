@@ -36,7 +36,6 @@ class ResponseApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: HomePage.id,
-//      initialRoute: Test.id,
       routes: {
         OnboardingScreen.id: (context) => OnboardingScreen(),
 
@@ -46,15 +45,13 @@ class ResponseApp extends StatelessWidget {
         NewsBody.id: (context) => NewsBody(),
         MapsBody.id: (context) => MapsBody(),
 
+        //SOS page
         SOS.id: (context) => SOS(),
         SOSselect.id: (context) => SOSselect(),
 
         //Detailed Screens
         DetailedNewsPage.id: (context) => DetailedNewsPage(),
         Earthquake.id: (context) => Earthquake(),
-
-        //Test
-//        Test.id: (context) => Test(),
       },
     );
   }
