@@ -10,6 +10,10 @@ Problem statement ID: SS42
 <br>Ministry/Organization name: Ministry of Health and Family Welfare
 <br>Domain: Healthcare & Biomedical Devices
 
+(1) [Complete Project Result Video](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/FINAL%20VIDEO.mp4) 
+(2) [Project Explanation & Working PPT](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/Final%20PPT.pptx)
+(3) [Architecture Explained](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/High%20Level%20Design%20Document.docx)
+
 ### <a name="PS">2. Problem statement</a>
 Emergencies and disasters impact population's health. Public health plays a critical role in working with health and non-health sectors responsible for preparing for and responding to emergencies. In emergencies, large numbers of people may require medical attention. Health care systems may be over-stretched, and public order may be threatened. Hence, we want software solution such that social media can be used in public health emergency response. Such tool/page/plugin should have the below capabilities.
 
