@@ -1,0 +1,68 @@
+<html>
+  <head></head>
+  <body>
+    
+    <h2>ALERT</h2>
+   <ul id='alert'>
+  
+   </ul>
+
+
+ <script type="text/javascript">
+   	function httpGet(theUrl)
+{
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", theUrl, false );
+  xmlHttp.send( null );
+  return xmlHttp.responseText;
+}
+
+var cities = ['Mumbai','Delhi','Kolkata','Chennai','Panaji'];
+
+for(x in cities){
+
+  
+  
+  var url = "https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=7GtG2QtCJhaeAUUa4L7aESCeC821uRip4r2TSAW67_Q&&product=alerts&name=" + cities[x];
+
+var response = httpGet(url);
+var obj = JSON.parse(response);
+console.log(obj);
+
+console.log(obj.alerts.alerts[0]);
+
+
+var country =  obj.alerts.country;
+var state =  obj.alerts.state;
+var city =  obj.alerts.city;
+var lat =  obj.alerts.latitude;
+var lon = obj.alerts.longitude;
+var timezone = obj.feedCreation;
+var description = obj.alerts.alerts[0].description;
+    
+console.log(country);
+console.log(state);
+console.log(city);
+console.log(lat);
+console.log(lon);
+console.log(timezone);
+console.log(description);
+
+console.log(obj.alerts.alerts[0].timeSegment.length);
+
+var par = document.getElementById("alert");
+
+
+
+var newChild = '<li>\
+<h3>'+city+', '+state+', '+country+'<h3>\
+<h4>'+timezone+'</h4>\
+<h4>' + description + '<h4/>\
+</li>';
+ par.insertAdjacentHTML('beforeend',newChild);
+  
+}
+   </script>
+    
+  </body>
+</html>

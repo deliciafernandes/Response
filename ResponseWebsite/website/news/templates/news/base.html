@@ -1,0 +1,1258 @@
+{%load static%}
+ <!DOCTYPE html>
+<html lang="en">
+<head> 
+
+     <title>Disaster Management: SEM_ALPHA</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+     
+     <link rel="stylesheet" href="{% static 'news/css/bootstrap.min.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/font-awesome.min.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/animate.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/owl.carousel.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/owl.theme.default.min.css'%}">
+     <link rel="stylesheet" href="{% static 'news/css/magnific-popup.css'%}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'news/css/template-style.css'%}">
+     
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4nyMP_pwA&callback=initMap&libraries=places">
+</script>
+     
+    
+
+</head>
+<body >
+ 
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="#home" class="navbar-brand">Disaster<span>.</span> Management</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse" style="width: 110%;">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <!-- <li><a href="#home" class="smoothScroll">Home</a></li> -->
+                         <li><a href="#prediction" class="smoothScroll">Predictions</a></li>
+                         <li><a href="#news" class="smoothScroll">Alert</a></li>
+                         <li><a href="#about" class="smoothScroll">About</a></li>
+                         <li><a href="#contact" class="smoothScroll">Contact</a></li>
+                         <li><a href="#" class="red smoothScroll " style="color: rgb(211, 44, 44);"  data-toggle="modal" data-target="#donate" >Donate</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="tel:108">Emergency DIAL:  <i class="fa fa-phone"></i>  108</a></li>
+                        
+                          <a href="/admin/" class="section-btn">Login </a>
+                        
+                          <a href="#" class="section-btn" data-toggle="modal" data-target="#exampleModal"> Register</a>
+                    </ul>
+               </div>
+
+          </div>
+           <!-- language ---------------------->
+           <div id="google_translate_element"></div>
+
+           <script type="text/javascript">
+           function googleTranslateElementInit() {
+           new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+           }
+           </script>
+
+           <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+       <!-- language --------------------->
+     </section>
+
+
+<!--MODAL FOR DONATE -->
+<div class="modal fade" id="donate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Donate</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">        	
+          <p style="font-weight: 600; color: black;">    Donate at the UPI : <span style="color: red ;">pmcares@oksbi </span> </p>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+     
+      
+<!--MODAL FOR LOGIN-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Admin Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">        	
+   <form >
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer01">Admin Name</label>
+      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="User Name"  required name="user_name">
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationServer02">Password</label>
+      <input type="password" class="form-control is-valid" id="validationServer02" placeholder="Password"  required name="password">
+    </div>
+  </div>
+  <button class="section-btn" type="submit" name="submit" style="margin-top: 20px; margin-left: 30px;" >Login</button>
+</form> 
+      </div>
+     
+    </div>
+  </div>
+</div>
+   
+  <!--MODAL FOR Signup-->
+    <div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+   <div class="modal-dialog" role="document">
+    <div class="modal-content"  >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">SignUp</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 300px">        	
+ <form  style="padding-left: 2%;" method = "POST" action ='/'>
+  {% csrf_token %}       
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+    {% for i,j in context2.items %}
+    
+      <label for="validationServer01">Name</label>
+     {{j.name}} 
+    </div>
+    <div class="form-row">
+     <div class="col-md-6 mb-3">
+       <label for="validationServer03">Contact:</label>
+       {{j.contact}} 
+     </div>
+    <div class="col-md-5 mb-6" style="margin-top:2%;">
+      <label for="validationServerUsername">Email</label>
+      <div class="input-group">
+        {{j.email}}
+      </div>
+
+  {% endfor %}
+    </div>
+  <button class="section-btn col-md-4 mb-3" type="submit" name="submit" style=" margin-left: 50px;" >Sign up</button>
+
+  </div>
+
+  
+
+   
+  </div>
+
+
+  
+</form>
+             
+      </div>
+     
+    </div>
+  </div>
+</div>
+     <!-- HOME -->
+     {% block content %}
+     <!-- HOME -->
+     <section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-8">
+                                             <h3>Disaster management and Emergency precautions!</h3>
+                                            
+                                             <h1>Stay updated! Stay safe! 
+                                        
+                                                  
+                                        <!--SOS button   -->
+                                        <br>
+                                        <div class="dropdown">
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#amb"   >SOS-Ambulance</button>
+                                           </div>
+
+                                           <div class="dropdown ">
+                                             <button class="dropbtn section-btn btn btn-default smoothScroll " style=" margin-left: 0px; font-size: small;border: solid white 1px;" data-toggle="modal" data-target="#sos">SOS-First-Aid</button>
+                                             
+                                           </div>
+
+                                         <!-- SOS  ends here-->
+                                             </h1>
+                                            
+                                        </div>
+                                            <div class="col-md-2 col-sm-2">
+                                             
+                                             <a href="#" target="_blank"  data-toggle="modal" data-target="#aid" class="section-btn btn btn-default smoothScroll">First - Aid Steps . </a><br>
+                                             <a href="#mapp" class="header section-btn btn btn-default smoothScroll" >Healthcare Centers </a><br>
+                                             <a href="#prec" class="header section-btn btn btn-default smoothScroll" >Precautionary Steps</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>
+
+
+<!-- chatbot ----------------------------------------------------------->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="ResponseBot"
+  agent-id="e0427604-a4d5-4dde-aaf8-68748977f295"
+  language-code="en"
+></df-messenger>         <df-messenger
+           intent="WELCOME"
+           chat-title="Response"
+           agent-id="b9478ac3-83a8-4045-994e-cc519a59eae8"
+           language-code="en"
+         ></df-messenger>
+<!-- ------------------------------------------------------------------->
+     
+     <!-- Ambulance Modal -->
+<div class="modal fade" id="amb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Confirmation Box </h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+                      Confirm Sending the message: <br> <br> 
+                      <form>
+
+                        <input id="name_user" type="text" placeholder="Your Name" name = "name" class="field" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+                    <input id="distype" type="text " placeholder="Disaster Type" name = "distype" class="field" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+
+                    <button href="#" onclick="getLocation()" class="btn btn-primary" >SOS</button>  
+                      <a href="#" class="btn btn-primary">CANCEL</a>
+
+                        </form>
+
+                          
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+
+
+<script>
+
+                  function httpGet(theUrl)
+                  {
+                      var xmlHttp = new XMLHttpRequest();
+                      xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                      xmlHttp.send( null );
+                      return xmlHttp.responseText;
+                  }
+
+                  // var x = document.getElementById("demo");
+
+                  function getLocation() {
+                    if (navigator.geolocation) {
+                      navigator.geolocation.getCurrentPosition(showPosition);
+                    } else { 
+                      // x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+                  function showPosition(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=4bf58dd8d48988d196941735&sortByDistance=1";
+
+                    
+                    var response = httpGet(url);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+                    console.log(obj.response.venues[0].name);
+
+                    var hospital= obj.response.venues[0].name;
+            
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user").value;
+
+                    var message = "Alert has been been sent to " + hospital+ " for user " + name;
+                    
+
+                    alert(message) ;
+              
+
+                    
+                    var URL = "{% url 'rel-help' %}";
+
+                    var data = {'name': name,'hospital': hospital, 'contact': contact, 'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+
+
+
+
+<!--  -->
+
+
+
+<!--MODAL FOR First Aid-->
+<div class="modal fade" id="aid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog aid" role="document" >
+      <div class="modal-content ">
+        <div class="modal-header aid-head">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: rgb(255, 255, 255) ; font-weight: 500">First-Aid Steps</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="color: rgb(255, 255, 255);">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body aid-body">
+          <div class="col-md-3 m-btn">
+               <a href="#" data-toggle="modal" data-target="#bone" class=" big  btn btn-default  bold ">Broken Bone</a>
+          </div>
+          <div class="col-md-3 m-btn">
+               <a href="#" data-toggle="modal" data-target="#bleed" class="btn btn-default  bold big">Bleeding Wounds</a><br>
+          </div>
+
+               <div class="col-md-3 m-btn">
+               <a href="#"  data-toggle="modal" data-target="#int-bleed" class=" btn btn-default bold big ">Internal Bleeding</a><br>
+          </div>
+
+               <div class="col-md-3 m-btn">
+               <a href="#" data-toggle="modal" data-target="#burn"  class=" btn btn-default  bold big">Burn Treatment</a>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- Broken Bone Modal -->
+<div class="modal fade" id="bone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" >
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Broken Bone</h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+                     <p style="font-weight: 500; color: #000;" >
+                     <img src="images/bone.png" alt="" width="100%">
+                         <p class="bold">  Treatment of broken bone wounds </p>  <br>
+                         - Treatment of a broken bone wound (fixation) is known as splint bandaging. Fixation is done by applying two splints comprising of wood lined with thin cloth/sponge. The splints, each two centimeter in length are meant to flank the fracture location, which are then bound with a rope, and tightened to support the broken body part and prevent it from suspending. 
+                         <br> <br>  - Treating a broken neck is by propping up the neck to prevent any movement, whether left and right, to and fro, as well as turning around. 
+                     <br>   <br>   - A broken back does not need first aid, but needs special aid from competent persons. What should be exercised is to make victim remain in a lying down position, and to make use of a flat and hard palanquin when transferring the victim to a different location. 
+                     <br>    <br> -  When treating a victim with a broken collarbone, no splints are needed, only a shoulder binder to retain its position and prevent the victim from stooping. 
+                     <br>  <br>  -   In the case of an open broken bone, first step is to cover the wound, and thereafter conduct a fixation against the broken bone. 
+     
+     
+                         <p class="bold">Rcognize Wound</p>
+                     'A broken bone wound refers to a wound which occurs on a bone, in the form of cracking, breaking or sticking out of the body. 
+                     Broken bones are injuries most common during earthquakes. <br>
+                     The cause of a broken bone is for instance being struck by building debris, trampled on, getting squeezed. <br><br>
+                     <p class="bold">
+                     Types of broken bone wounds <br></p>
+     
+                     • Fractured bone: a bone experiences trauma/impact it may cause the bone to crack, but not break apart. <br>
+                     • Closed broken bone: a bone breaks, but is still inside the body. <br>
+                     • Open broken bone: a bone breaks and sticks out through the skin. <br><br>
+                     <p class="bold">
+                     Symptoms of broken bone wounds <br></p>
+                     
+     
+                     • Black and blue <br>
+                     • Swollen <br>
+                     • Very painful when touched or moved <br>
+                     • Change in form <br>
+                     • Broken neck bone can be noticed when there are wounds on both head and neck <br>
+                     • Broken backbone can be noticed when there is a difference in the length of the legs <br>
+                     • Broken rib-bone is followed by breathing difficulties <br>
+                     <br>
+                     <p class="bold">
+                     Principles of first aid against broken bone wounds 
+                     The first aid principle to address a broken bone wound is through the fixation to rest/minimize activity of the two joints that flank the broken bone. This is necessary to prevent friction of the broken bone. Friction of a broken bone can aggravate the wound. 
+                     </p>
+                     </p>
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+     
+     
+     <!-- Bleeding Modal -->
+     <div class="modal fade" id="bleed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" >
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Bleeding</h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+                     <p style="font-weight: 500; color: #000;" >
+                     <img src="images/curs.png" alt="" width="100%">
+                         <p class="bold">  Bleeding wounds</p>  <br>
+                         During certain disasters, a bleeding wound may occur, e.g., piercing by flying building material during a cyclone, being struck down by building debris, scratching by a sharp object. <br> <br>  - Treating a broken neck is by propping up the neck to prevent any movement, whether left and right, to and fro, as well as turning around. 
+                     <br>   <br>   - Keep in mind that a bleeding wound can be quite dangerous and should straightaway be treated because of several factors:  <br>
+                     • Whenever there is a loss of blood exceeding 20% of the total blood in a human body, this may cause unconsciousness and when no immediate help is given could result in death. <br>
+                     • Blood outflow from a wound. A wound represents a window for viruses or bacteria to enter the body, therefore the wound should be covered immediately to prevent an infection.  <br>
+                     
+     <br>
+                     Although the body has the ability to stop bleeding, it is necessary to apply first aid against a bleeding wound. 
+                  <br> <br><p class="bold">  The main way to do this is through: </p>
+      <br>                • exerting pressure on the wound 
+          <br>           • placing a bandage on the wound 
+              <br>       • exerting pressure and placing a bandage (tourniquet) on the wound • exerting pressure on internal blood center points, for instance by the neck side, underneath the upper arm 
+                  <br>   • and even when there is no more bleeding, the wound should still be covered to prevent bacteria/germs from entering through the open skin.                
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+     
+     
+     
+         <!-- Internal bleed Modal -->
+     <div class="modal fade" id="int-bleed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+         <div class="modal-dialog" role="document" >
+             <div class="modal-content" >
+                 <div class="modal-header">
+                     <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500"> Internal Bleeding</h3>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="modal-body">   
+                     <div class="recog">
+                         <p style="font-weight: 500; color: #000;" >
+                         <img src="images/intbleed.png" alt="" width="100%">
+                             <p class="bold">  Internal Bleeding wounds</p>  <br>
+                             Internal bleeding occurs when there is an internal body wound, although no blood has left the body. 
+                           <br>  Body parts that often experience internal bleeding are the thoracic cavity, the stomach cavity and the head cavity. 
+                          <br>   Applying aid is through calming the victim, and by taking him/her a clinic or hospital as quickly as possible, because the treatment is limited to those with special competence. 
+                          <br> <br> <p class="bold">   Internal bleeding symptoms: </p> <br>
+                             • Stomach cavity bleeding is indicated by enlarged, hard and stiff stomach 
+                      <br>       • Thoracic cavity bleeding is indicated by short-windedness. 
+                       <br>      • Head cavity bleeding by decreasing consciousness and may result in paralysis. 
+     <br>
+                           <br>  Although the body has the ability to stop bleeding, it is necessary to apply first aid against a bleeding wound. 
+                        <br><br> <b class="bold">     The main way to do this is through: </br>
+                         <br>    • exerting pressure on the wound 
+                         <br>    • placing a bandage on the wound 
+                        <br>     • exerting pressure and placing a bandage (tourniquet) on the wound • exerting pressure on internal blood center points, for instance by the neck side, underneath the upper arm 
+                        <br>     • and even when there is no more bleeding, the wound should still be covered to prevent bacteria/germs from entering through the open skin. 
+                         </div>                                
+                     </div>  
+                 </div>
+             </div>
+         </div>
+     
+     
+             <!-- Burn Modal -->
+     <div class="modal fade" id="burn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+         <div class="modal-dialog" role="document" >
+             <div class="modal-content" >
+                 <div class="modal-header">
+                     <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Burn</h3>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="modal-body">   
+                     <div class="recog">
+                         <p style="font-weight: 500; color: #000;" > </p>>
+                         <img src="images/burns.png" alt="" width="100%">
+                             <p class="bold">  Burn</p>  <br>
+                             
+                            <br> A burn may occur because of fire from an electrical short-circuit, a stove or machinery. 
+                           <br><br> <p class="bold">  Burn symptoms: </p> <br> <br>
+                             The presence of a burn can be observed from the combination of symptoms as follows: 
+                          <br>   • Red colored skin 
+                           <br>  • Blistered skin 
+                        <br>     • Peeling off skin 
+                            <br> • Painful when touched 
+                           <br>  • Feeling very hot 
+                           <br>  • Flesh get burned until the bones can be seen 
+                            <br> • Stinging smell 
+                           <br>  • Feeling very thirsty 
+                            <br> • Not bleeding  <br>
+     
+                           <br> Principles of first aid against burns <br> <br>
+     <br>  • Stop the deepening process of the burn. Most effective: pouring or soaking the wound with cold and clean water. 
+     <br> • When a burn causes skin to peel off, immediately cover the wound with a clean cloth, avoid smearing with anything else to prevent risk of infection that may complicate further treatment. Cover the wound using a sterile cloth, for instance an already washed and ironed clean handkerchief or clean plastic. 
+     <br> • After the wound is covered, a bandage may be applied. Bandaging a burn is different than bandaging a bleeding wound. During bandaging a burn, it is important to be sure that the wound is covered rather than the tightness of the bandage. 
+     <br> • After the wound is covered, try to get further treatment. 
+     
+     
+     </div>                                
+                     </div>  
+                 </div>
+             </div>
+         </div>
+
+
+
+     
+<!-- FIRST AID Modal -->
+<div class="modal fade" id="sos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+     <div class="modal-dialog" role="document" style="margin-top: 20%; width: 20%;">
+         <div class="modal-content" >
+             <div class="modal-header">
+                 <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500;" >Confirmation Box </h3>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">   
+                 <div class="recog">
+
+
+                      Confirm Sending the message: <br> <br> 
+
+                    <form>
+
+                        <input id="name_user2" type="text" placeholder="Your Name" name = "name" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+                    <input id="intype" type="text " placeholder="Injury Type" name = "distype" style="border-color:transparent;border-bottom:solid red 2px;color: black;"> <br> <br>
+
+                    <button href="#" class="btn btn-primary" onclick="getLocation2()">SOS</button>
+
+                      <button href="#" class="btn btn-primary">CANCEL</button>
+
+                        </form>
+
+                          
+                 </div>                                
+                 </div>  
+             </div>
+         </div>
+     </div>
+
+<script>
+
+
+                  function getLocation2() {
+                    if (navigator.geolocation) {
+                      // print('hi');
+                      navigator.geolocation.getCurrentPosition(showPosition2);
+                    } else { 
+                       x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                  }
+
+
+
+                  function showPosition2(position) {
+                    // x.innerHTML = "Latitude: " + position.coords.latitude + 
+                    // "<br>Longitude: " + position.coords.longitude;
+                    
+                    url = "https://api.foursquare.com/v2/venues/search?&client_id=K2W5FGGUYG3PA1FEN0GB55M5EE4GGXIILMAHDTHJUOFGGUIA&client_secret=PRLRR44R3AOV3JKDH4VXM3JAKKYPRHKRWQSQNLJSRPPNG2K1&v=20200802&ll="+position.coords.latitude+","+position.coords.longitude+"&categoryId=50328a8e91d4c4b30a586d6c&sortByDistance=1";
+
+                    var response = httpGet(url);
+                    alert(response);
+                    
+                    // var y = document.getElementById("response");
+                    //y.innerHTML = response;
+                    
+                    var obj = JSON.parse(response);
+                    
+                    // var name = document.getElementById("hospitaldata1");
+                    // name.innerHTML = obj.response.venues[0].name;
+
+                    var ngo = obj.response.venues[0].name;
+    
+                    var contact = Math.floor(Math.random() * 1000000000);
+
+                    var name = document.getElementById("name_user2").value;
+
+                    var injury = document.getElementById("intype").value;
+
+                    var message = "Alert has been been sent to " + ngo+ " for user " + name;
+
+              
+                    
+                    var URL = "{% url 'rel-help2' %}";
+
+                    var data = {'name': name,'ngo': ngo, 'contact': contact, 'injury':injury,'lat':position.coords.latitude,'lon':position.coords.longitude,csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                    $.post(URL, data, function(response){
+                        if(response === 'success'){ alert('Alert sent'); }
+                        else{ alert('Error! :('); }
+                    });
+
+                  }
+
+                  </script>
+
+
+<!-- prediction -->
+<section id="prediction" data-stellar-background-ratio="0.1" style="padding: 40px;">
+          <div class="container wow fadeInUp"  data-wow-delay="0.1s"  style="padding: 0px;">
+               <div class=" col-md-6 holder" style="padding: 0px; margin: 0px">
+                     <h2>Predictions for Bad Weather</h2>
+   
+   <ul id='alert'style="font-size: 10px; font-weight: 100; ">
+  
+   </ul>
+   </div>
+
+   <div class=" col-md-6 holder" style="padding-left: 3%; margin: 0px">
+    <h2>Predictions for EarthQuakes</h2>
+   <ul id='alert2'style="font-size: 10px; font-weight: 100; ">
+  
+   </ul>
+
+ </div>
+ <script type="text/javascript">
+    function httpGet(theUrl)
+{
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", theUrl, false );
+  xmlHttp.send( null );
+  return xmlHttp.responseText;
+}
+
+var cities = ['Mumbai','Delhi','Kolkata','Chennai','Panaji'];
+
+for(x in cities){
+
+  
+  
+  var url = "https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=7GtG2QtCJhaeAUUa4L7aESCeC821uRip4r2TSAW67_Q&&product=alerts&name=" + cities[x];
+
+var response = httpGet(url);
+var obj = JSON.parse(response);
+// console.log(obj);
+
+// console.log(obj.alerts.alerts[0]);
+
+
+var country =  obj.alerts.country;
+var state =  obj.alerts.state;
+var city =  obj.alerts.city;
+var lat =  obj.alerts.latitude;
+var lon = obj.alerts.longitude;
+var timezone = obj.feedCreation;
+var description = obj.alerts.alerts[0].description;
+    
+// console.log(country);
+// console.log(state);
+// console.log(city);
+// console.log(lat);
+// console.log(lon);
+// console.log(timezone);
+// console.log(description);
+
+// console.log(obj.alerts.alerts[0].timeSegment.length);
+
+var par = document.getElementById("alert");
+
+var newChild = '<li class="pred">\
+<p class="pred">'+city+', '+state+', '+country+'</p>\
+<p>'+timezone+'</p>\
+<p>' + description + '</p>\
+</li>';
+ par.insertAdjacentHTML('beforeend',newChild);
+  
+}
+
+
+//For Earthquakes
+
+var par2 = document.getElementById("alert2");
+
+var url2 = "https://api.aerisapi.com/earthquakes/india?&format=json&filter=all&client_id=QbZrp9nhlBXhZY5BXsC2v&client_secret=SJl5h3fGEzD8hXE6W7IZavaEyu0VRsVQ2DCO69TS";
+
+response = httpGet(url2);
+obj = JSON.parse(response);
+// console.log(obj);
+
+if(obj.error == null){
+
+  for( r in obj.response){
+    var location = obj.response[r].report.location;
+    var type = obj.response[r].report.type;
+    var date = obj.response[r].report.dateTimeISO;
+
+    var newChild2 = '<li class="pred">\
+    <p class="pred">'+location+'</p>\
+    <p>'+date+'</p>\
+    <p>' + type + '</p>\
+    </li>';
+     par2.insertAdjacentHTML('beforeend',newChild2);
+      
+  }
+}else{
+  var newChild2 = '<h3>Youre safe, no Earthquakes around you.</h3>';
+     par2.insertAdjacentHTML('beforeend',newChild2);
+}
+
+
+
+
+   </script>
+                              
+
+     </section>          
+<div class="modal fade" id="news1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 13%;">
+              <div class="modal-content" >
+                  <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Description</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div cCorona virus invadinlass="modal-body" style="padding: 3%;"> 
+                       <span> mad gay</span>
+                       <h5>big gay</h5>
+                       <p>gay</p>
+                       <a href="#" data-toggle="modal" data-target="#share"><img src="{% static 'news/images/share.jpg' %}" alt="loading.." class="m-img">     </a>   
+                       <a href="base.html#donate" class="btn btn-default">Donate</a>
+                       <a href="" target="_blank" class="btn btn-default">Precautions</a>
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+     <!-- Share News-Description Modal -->
+     <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 27%; width: 11%; ">
+              <div class="modal-content" >
+                  <div class="modal-body"> 
+                       <a href="#"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/reddit.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/fb.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/twitter.png' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+
+      <!-- News -->
+  
+      <section id="contact news" data-stellar-background-ratio="0.1" style="padding: 40px;">
+          <div class="container wow fadeInUp"  data-wow-delay="0.1s"  style="padding: 0px;">
+               <div class=" col-md-6">
+                    <h2 id="news">Ministry News</h2>
+                          <div class="holder">
+                         <ul id="ticker01">
+                                                            
+                                        {% for q in query %}
+
+                                        <li> 
+                                            <div class="col-md-4">
+                                                  <img src="{{q.imageurl}}" alt="loading..." class="newsi">  
+                                             </div>
+                                             <div class="col-md-8">
+                                                  <span>{{q.date}}</span><a href="{{q.url}}">  <br> {{q.headline}}</a>
+                                             </div> <br>
+                                        </li>
+                                        {% endfor %}
+                              </ul>
+                       </div>
+
+               </div>
+               <div class=" col-md-1"> </div>
+               <div class=" col-md-6" >
+                    <h2 id="news">National News</h2>
+                    
+                    
+                                        <div class="holder">
+                                             <ul id="ticker01">
+                                             {% for i,r in context1.items %}
+                                   
+                                             {% for  key,value in r.iterrows  %}
+                                             
+
+                                                  <li style="height: 70px;"> 
+                                                       <div class="col-md-4">
+                                                             <img src="{{value.image_url}}" alt="loading..." class="newsi">
+                                                        </div>
+                                                        <div class="col-md-8" style="font-size: small;">
+                                                             <span>{{value.date}}</span><a href="#" data-toggle="modal" data-target="#news1">  <br>{{value.headline}}</a> <br>
+                                                              <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">  <img src="{% static 'news/images/fb.jpeg' %}" alt="" class="mm-img" style="width: 20px;"> </a> 
+                                                              <a href="https://twitter.com/home?status={{value.share_string}}%20http://codingforentrepreneurs.com/"><img src="{% static 'news/images/twitter.png' %}" alt="" class="mm-img" style="width: 20px;"></a>
+                                                              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}/&title={{value.headline}}&summary={{value.share_link}}"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="" class="mm-img" style="width: 20px;"></a>
+                                                        </div> <br>
+                                                   </li>
+                                                  {%endfor%}
+                                                  {%endfor%}     
+                                             
+                                                  
+                                                  </ul>
+                                           </div>
+                    
+                                   </div>
+
+
+                </div>
+     </section>          
+<div class="modal fade" id="news1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 13%;">
+              <div class="modal-content" >
+                  <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel" style="color: black ; font-weight: 500">Description</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div cCorona virus invadinlass="modal-body" style="padding: 3%;"> 
+                       <span> mad gay</span>
+                       <h5>big gay</h5>
+                       <p>gay</p>
+                       <a href="#" data-toggle="modal" data-target="#share"><img src="{% static 'news/images/share.jpg' %}" alt="loading.." class="m-img">     </a>   
+                       <a href="base.html#donate" class="btn btn-default">Donate</a>
+                       <a href="" target="_blank" class="btn btn-default">Precautions</a>
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+     <!-- Share News-Description Modal -->
+     <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document" style="margin-top: 27%; width: 11%; ">
+              <div class="modal-content" >
+                  <div class="modal-body"> 
+                       <a href="#"><img src="{% static 'news/images/linkedin.jpeg' %}" alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/reddit.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/fb.jpeg' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                       <a href="#"><img src="{% static 'news/images/twitter.png' %} " alt="loading.." class="mm-img" style="width: 20px;">     </a>   
+                      </div>  
+                  </div>
+              </div>
+          </div>
+
+ 
+
+<!-- Maps -->
+
+<style type="text/css">
+
+#map {
+  height: 500px;
+  margin: 10px auto;
+  width: 800px;
+}
+  </style>
+
+  <script type="text/javascript">
+    
+    var map;
+
+function initMap() {
+    // Create the map.
+    var pyrmont = {
+        lat: 23.8701334,
+        lng: 90.2713944
+    };
+
+    function getLocation3() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition3);
+        } else { 
+          alert("Geolocation is not supported by this browser");
+        }
+      }
+
+    function showPosition3(position) {
+      
+      var pyrmont = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    };
+        
+
+        console.log(pyrmont);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 17
+    });
+
+    // Create the places service.
+    var service = new google.maps.places.PlacesService(map);
+
+    // Perform a nearby search.
+    service.nearbySearch({
+            location: pyrmont,
+            radius: 4000,
+            type: ['hospital']
+        },
+        function(results, status, pagination) {
+            if (status !== 'OK') return;
+
+            createMarkers(results);
+            getNextPage = pagination.hasNextPage && function() {
+                pagination.nextPage();
+            };
+        });
+    
+
+
+    }
+
+    getLocation3(); 
+
+    
+}
+
+function createMarkers(places) {
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0, place; place = places[i]; i++) {
+        var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+        };
+
+        var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location
+        });
+        bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+}
+  </script>
+
+
+
+
+<div class="section-title wow fadeInUp" data-wow-delay="0.1s" style="text-align: center; padding-top: 4%;">
+     <h2 id="mapp">Nearby Healthcare Centers</h2>
+     
+</div>
+ <div id="map" class="section-title wow fadeInUp" data-wow-delay="0.1s" >     
+    <!-- s -->
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC71ta8vee7b0DdK2daaBj23z4nyMP_pwA&libraries=places&callback=initMap" async defer></script>
+
+
+</div>
+
+
+
+
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h2>What we do.</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3 style="font-weight: 100;">We are living in unprecedented times and every person in this world has been impacted by natural disasters in some way or the other. We may not be able to change the past but we can act constructively towards the betterment of the current situation, '<span style="font-weight: 600;">Precaution is better than cure</span>'. To be above this uncertain dilemma of life and death situations, we have built this system to help manage disaster situations, spread awareness and save lives.</h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{%static 'news/images/about-image.jpg'%} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+
+ 
+
+
+     <!-- MENU-->
+     <section id="menu" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2 id="prec">Precautionary Steps</h2>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url  'wildfire'%}" target="_blank" title="Wildfire">
+                                   <img src="{% static 'news/images/wildfires.jpg'%}"  class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Wildfire</h3>
+                                             <p > <a href="{% url  'wildfire'%}" target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                        
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'floods'%}"  target="_blank"  title="Flood">
+                                   <img src="{% static 'news/images/flooood.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                              <h3>Flood</h3>
+                                              <p > <a href="{% url 'floods'%}" target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+                                             </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'violence'%}"  target="_blank"  title="Violence">
+                                   <img src="{% static 'news/images/riots.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                           <h3>Violence</h3>
+                                           <p > <a href={% url 'violence'%} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'earthquake'%}"  target="_blank" title="Earthquake">
+                                   <img src="{%static 'news/images/earthquakeee.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Earthquake</h3>
+                                             <p > <a href={% url 'earthquake'%} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'storms'%}" target="_blank" title="Tornado">
+                                   <img src="{% static 'news/images/tornado.jpg' %}" class="img-responsive" alt="">
+
+                                  <div class="menu-info">
+                                        <div class="menu-item">
+                                            <h3>Tornado</h3>
+                                            <p > <a href={% url 'storms'%} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% url 'pandemic' %}" target="_blank"  title="Pandemic">
+                                   <img src="{% static 'news/images/pandemic.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                           <h3>Pandemic</h3>
+                                           <p > <a href={% url 'pandemic' %} target="_blank" style="color: aliceblue;">Click for Precautions. </a></p>
+
+                                        </div>
+                                       
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TESTIMONIAL -->
+    
+
+
+    
+{%endblock%}
+     <!-- FOOTER -->
+     <footer id="footer" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-3 col-sm-8">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Find us</h2>
+                              </div>
+                              <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>123 nulla a cursus rhoncus,<br> augue sem viverra 10870<br>id ultricies sapien</p>
+                              </address>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-8" id="contact">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Contact</h2>
+                              </div>
+                              <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>090-080-0650 | 090-070-0430</p>
+                                   <p><a href="mailto:info@company.com">sem.alpha.sih2020@gmail.com</a></p>
+                              </address>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-8">
+                         <div class="footer-info footer-open-hour">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Office</h2>
+                              </div>
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>Monday: Closed</p>
+                                   <div>
+                                        <strong>Tuesday to Friday</strong>
+                                        <p>7:00 AM - 9:00 PM</p>
+                                   </div>
+                                   <div>
+                                        <strong>Saturday - Sunday</strong>
+                                        <p>11:00 AM - 10:00 PM</p>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4">
+                         <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
+                              <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                              <li><a href="#" class="fa fa-twitter"></a></li>
+                              <li><a href="#" class="fa fa-instagram"></a></li>
+                              <li><a href="#" class="fa fa-google"></a></li>
+                         </ul>
+
+                         <div class="wow fadeInUp copyright-text" data-wow-delay="0.8s"> 
+                              <p><br>Copyright &copy; 2020 <br> SEM_ALPHA
+                              
+                             
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="{%static 'news/js/jquery.js'%}"></script>
+     <script src="{%static 'news/js/bootstrap.min.js'%}"></script>
+     <script src="{%static 'news/js/jquery.stellar.min.js'%}"></script>
+     <script src="{%static 'news/js/wow.min.js'%}"></script>
+     <script src="{%static 'news/js/owl.carousel.min.js'%}"></script>
+     <script src="{%static 'news/js/jquery.magnific-popup.min.js'%}"></script>
+     <script src="{%static 'news/js/smoothscroll.js'%}"></script>
+     <script src="{%static 'news/js/custom.js'%}"></script>
+     
+     
+
+
+</body>
+</html>

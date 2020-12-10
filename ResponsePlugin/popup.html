@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html script-src 'unsafe-inline'; charset=windows-1252">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self';  -->
+          <title>Disaster Alert!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    
+ 
+
+    <style>
+      /* Modal Structure */
+
+      html,
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        margin: 0;
+        min-height: 180px;
+        padding: 0;
+        width: 384px;
+        background-color: rgb(54, 54, 54);
+        height: 25%;
+      }
+
+      h1 {
+        font-family: "Menlo", monospace;
+        font-size: 22px;
+        font-weight: 400;
+        margin: 0;
+        color: #ffffff;
+      }
+
+      a:link,
+      a:visited {
+        color:white;
+        outline: 0;
+        text-decoration: none;
+      }
+
+      img {
+        width: 30px;
+      }
+
+      .modal-header {
+        align-items: center;
+        border-bottom: 0.5px solid #dadada;
+      }
+
+      .modal-content {
+        text-align: center;
+        margin-top: 30px;
+
+      }
+
+      .modal-icons {
+        border-top: 0.5px solid #dadada;
+        height: 50px;
+        width: 100%;
+      }
+
+      .logo {
+        padding: 16px;
+      }
+
+      .logo-icon {
+        vertical-align: text-bottom;
+        margin-right: 12px;
+      }
+
+      .version {
+        color:white;
+        font-size: 18px;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 22px;
+      }
+
+      .flex {
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+        width: 120px;
+      }
+
+      .news{
+        color: rgb(218, 218, 218);
+      }
+      .data{
+        text-align: center;
+        margin-bottom: 2%;
+
+      }
+
+
+
+
+      .flex:hover {
+        opacity: 0.4;
+      }
+
+      .flex .fa {
+        font-size: 40 384pxpx;
+        color: #2f5876;
+      
+      
+      }
+  
+      #data{
+        color:white;      
+      
+      }
+      #btn{
+        padding: 10px;
+        background-color:rgb(97, 97, 97);
+        transition: 0.5s;
+       
+       
+
+        
+      }
+    
+      #btn:hover{
+        padding: 10px;
+        background-color:rgb(31, 30, 30);
+      }
+    </style>
+    <!-- <script src="popup.js"></script> -->
+  </head>
+
+  <body >
+   
+   
+    <div class="modal-header">
+      <h1 class="logo">
+        <img class="logo-icon" src="images/icon.png" />Disaster Alert!
+      </h1>
+
+        <div class="data">
+      
+      <h3 class="news">Latest News</h3>
+      
+      <a id='data' target="_blank"></a>  
+
+      </div>
+
+      </div>
+    <div class="modal-content">
+     <p style="margin-bottom: 30px;"> <a href="https://immohann.github.io/Crisis-Management/" id="btn" target="_blank" style="margin-bottom: 50px; ">Access Media Page</a>
+     </p>
+     
+     
+        
+    
+    </div>
+  
+    <!-- <div class="modal-icons">
+      <div class="flex-container">
+        <div class="flex">
+          <a href="#" target="_blank">
+            <i class="fa fa-globe" style="color:darksalmon "></i>
+          </a>
+        </div>
+        <div class="flex">
+          <a href="#"target="_blank">
+            <i class="fa fa-youtube" style="color:darksalmon "></i>
+          </a>
+        </div>
+        <div class="flex">
+          <a href="#" target="_blank">
+            <i class="fa fa-twitter" style="color:darksalmon "></i>
+          </a>
+        </div> 
+        <div class="flex">
+          <a href="#" target="_blank">
+            <i class="fa fa-facebook" style="color:darksalmon "></i>
+          </a>
+        </div>
+        <div class="flex">
+          <a href="https://github.com/" target="_blank">
+            <i class="fa fa-github" style="color:darksalmon "></i>
+          </a>
+        </div>
+      </div>
+    </div>
+   -->
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+  <!-- Add Firebase Database -->
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script> 
+  <script src="background.js"></script>
+  <!-- <script>
+
+  </script> -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

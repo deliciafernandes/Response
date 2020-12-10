@@ -1,0 +1,15 @@
+beautifulsoup4==4.9.1
+bs4==0.0.1
+certifi==2020.6.20
+chardet==3.0.4
+idna==2.10
+jsonlines==1.2.0
+newsapi==0.1.1
+newsapi-python==0.2.6
+numpy==1.18.1
+progressbar2==3.50.0
+python-utils==2.4.0
+requests==2.24.0
+six==1.14.0
+soupsieve==2.0.1
+urllib3==1.25.9
