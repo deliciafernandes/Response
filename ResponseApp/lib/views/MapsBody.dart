@@ -55,8 +55,8 @@ class _MapsBodyState extends State<MapsBody> {
         markerId: MarkerId(_lastMapPosition.toString()),
         position: _lastMapPosition,
         infoWindow: InfoWindow(
-          title: 'Really cool place',
-          snippet: '5 Star Rating',
+          title: 'Your Current Location',
+          snippet: "Mumbai",
         ),
         icon: BitmapDescriptor.defaultMarker,
       ));
@@ -73,11 +73,8 @@ class _MapsBodyState extends State<MapsBody> {
 
   @override
   void initState() {
-    // getLocationData();
-
+    getLocationData();
     super.initState();
-
-    //map code
   }
 
   @override

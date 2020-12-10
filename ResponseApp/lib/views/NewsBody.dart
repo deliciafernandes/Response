@@ -21,7 +21,7 @@ class _NewsBodyState extends State<NewsBody> {
   String _isClicked = 'national';
 
   LocationService locationService = LocationService();
-  var userLocation;
+  var userLocation = "MUMBAI";
 
   //New firestore instance
   final _firestore = Firestore.instance;
@@ -31,13 +31,15 @@ class _NewsBodyState extends State<NewsBody> {
 
   @override
   void initState() {
-    super.initState();
     getLocationData();
+    super.initState();
   }
 
-  void getLocationData() async {
+  //Needs to be future!
+  Future getLocationData() async {
 //  Fetching _userLocation
     userLocation = await locationService.getLocation();
+    setState(() {});
   }
 
   @override
@@ -48,8 +50,6 @@ class _NewsBodyState extends State<NewsBody> {
       height: 667.0,
       allowFontScaling: true,
     );
-
-    print(userLocation);
 
     return Column(
       children: [
@@ -167,10 +167,7 @@ class _NewsBodyState extends State<NewsBody> {
                         : news.data['location']);
 
                     String newsLocation = location.toUpperCase();
-
-                    //TODO: userLocation giving null
-                    var temp = "MUMBAI";
-                    if (temp.contains(newsLocation)) {
+                    if (userLocation.contains(newsLocation)) {
                       //date conversion
                       DateTime myDateTime =
                           DateTime.parse(news.data['date'].toDate().toString());
