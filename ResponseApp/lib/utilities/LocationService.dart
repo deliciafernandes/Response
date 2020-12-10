@@ -1,5 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
+import 'dart:async';
 
 class LocationService {
   String _userLocation = 'INDIA';
@@ -7,9 +8,14 @@ class LocationService {
   double longitude;
 
   Future<String> getLocation() async {
+    GeolocationStatus geolocationStatus =
+        await Geolocator().checkGeolocationPermissionStatus();
+
     try {
       Position position = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.medium);
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+      // Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.medium);
 
       final coordinates = Coordinates(position.latitude, position.longitude);
       var addresses =
@@ -46,8 +52,10 @@ class LocationService {
       Position position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
 
+      print("here  ${position.latitude}");
       return position.latitude;
     } catch (e) {
+      print(e);
       return 20.5937;
     }
   }
