@@ -49,6 +49,8 @@ class _NewsBodyState extends State<NewsBody> {
       allowFontScaling: true,
     );
 
+    print(userLocation);
+
     return Column(
       children: [
         CustomAppBar(),
@@ -166,7 +168,9 @@ class _NewsBodyState extends State<NewsBody> {
 
                     String newsLocation = location.toUpperCase();
 
-                    if (userLocation.contains(newsLocation)) {
+                    //TODO: userLocation giving null
+                    var temp = "MUMBAI";
+                    if (temp.contains(newsLocation)) {
                       //date conversion
                       DateTime myDateTime =
                           DateTime.parse(news.data['date'].toDate().toString());
@@ -175,8 +179,6 @@ class _NewsBodyState extends State<NewsBody> {
                           DateFormat('d LLLL, y').format(myDateTime);
                       final String description = news.data['description'];
                       final String distype = news.data['distype'];
-
-//widget.disasterType = distype;
                       final String headline = news.data['headline'];
                       final String imageurl = news.data['imageurl'];
                       final String url = news.data['url'];
@@ -216,6 +218,7 @@ class _NewsBodyState extends State<NewsBody> {
                           return localNewsWidgets[i];
                         }),
                   );
+                  return Container();
                 },
               ),
       ],

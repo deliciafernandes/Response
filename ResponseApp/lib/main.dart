@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:response/Flood.dart';
+import 'package:response/views/Flood.dart';
 import 'package:flutter/services.dart';
 
 import 'views/DetailedNewsPage.dart';
@@ -54,8 +54,8 @@ class ResponseApp extends StatelessWidget {
 
         //Detailed Screens
         DetailedNewsPage.id: (context) => DetailedNewsPage(),
-//        Earthquake.id: (context) => Earthquake(),
       },
+
       // List all of the app's supported locales here
     );
   }

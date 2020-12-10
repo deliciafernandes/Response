@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
       height: 667.0,
       allowFontScaling: true,
     );
+
     final List<MenuItem> options1 = [
       MenuItem(DrawerIcon.home_run, 'Home', () => Navigator.pop(context)),
       MenuItem(
@@ -82,7 +83,8 @@ class _HomePageState extends State<HomePage> {
 
     final List<MenuItem> options2 = [
       MenuItem(DrawerIcon.question_mark, 'How to use?', () {
-        Navigator.pushNamed(context, OnboardingScreen.id);
+        //TODO: Bug here
+        // Navigator.pushNamed(context, OnboardingScreen.id);
       }),
       MenuItem(
           Share.icons8_share,
@@ -239,15 +241,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Idea.icons8_idea),
             label: 'What to do?',
           ),
+          BottomNavigationBarItem(icon: Icon(News.icons8_news), label: 'News'),
+          BottomNavigationBarItem(icon: Icon(Maps.location), label: 'Map'),
           BottomNavigationBarItem(
-              icon: Icon(News.icons8_news),
-              title: Text('News', style: TextStyle(fontFamily: 'WorkSans'))),
-          BottomNavigationBarItem(
-              icon: Icon(Maps.location),
-              title: Text('Map', style: TextStyle(fontFamily: 'WorkSans'))),
-          BottomNavigationBarItem(
-              icon: Icon(DrawerIcon.speak),
-              title: Text('ChatBot', style: TextStyle(fontFamily: 'WorkSans'))),
+              icon: Icon(DrawerIcon.speak), label: 'ChatBot'),
         ],
       ),
     );

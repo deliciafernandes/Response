@@ -30,6 +30,12 @@ class _SOSState extends State<SOS> with SingleTickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var _width = MediaQuery.of(context).size.width;
 

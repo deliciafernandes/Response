@@ -34,38 +34,44 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       allowFontScaling: true,
     );
 
-    return IntroductionScreen(
-      globalBackgroundColor: Colors.transparent,
-      key: introKey,
-      pages: pagesList(),
-      onDone: () => Navigator.pop(context),
-      showSkipButton: true,
-      skipFlex: 0,
-      nextFlex: 0,
-      skip: Text(
-        'Skip',
-        style: TextStyle(
-          fontFamily: 'Merriweather',
-          color: Colors.white,
-        ),
-      ),
-      next: Icon(Icons.arrow_forward, color: Colors.white),
-      done: Text(
-        'Done',
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Merriweather',
-          color: Colors.white,
-        ),
-      ),
-      dotsDecorator: DotsDecorator(
-        size: Size(10.0.w, 10.0.w),
-        color: Colors.white24,
-        activeColor: Colors.white,
-        activeSize: Size(22.0.w, 10.0.w),
-        activeShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(25.0.w)),
-        ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          IntroductionScreen(
+            globalBackgroundColor: Colors.transparent,
+            key: introKey,
+            pages: pagesList(),
+            onDone: () => Navigator.pop(context),
+            showSkipButton: true,
+            skipFlex: 0,
+            nextFlex: 0,
+            skip: Text(
+              'Skip',
+              style: TextStyle(
+                fontFamily: 'Merriweather',
+                color: Colors.white,
+              ),
+            ),
+            next: Icon(Icons.arrow_forward, color: Colors.white),
+            done: Text(
+              'Done',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Merriweather',
+                color: Colors.white,
+              ),
+            ),
+            dotsDecorator: DotsDecorator(
+              size: Size(10.0.w, 10.0.w),
+              color: Colors.white24,
+              activeColor: Colors.white,
+              activeSize: Size(22.0.w, 10.0.w),
+              activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0.w)),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

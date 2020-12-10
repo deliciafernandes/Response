@@ -70,7 +70,7 @@ class _HomePageDialogflow extends State<HomePageDialogflow> {
     _textController.clear();
     ChatMessage message = new ChatMessage(
       text: text,
-      name: "Promise",
+      name: "Response Bot",
       type: true,
     );
     setState(() {

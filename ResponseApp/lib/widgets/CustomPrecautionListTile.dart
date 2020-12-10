@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Flood.dart';
+import '../views/Flood.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
 class CustomPrecautionListTile extends StatelessWidget {

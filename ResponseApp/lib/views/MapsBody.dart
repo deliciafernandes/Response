@@ -116,7 +116,8 @@ class _MapsBodyState extends State<MapsBody> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 10.0.w, vertical: 10.0.h),
                   child: Material(
                     elevation: 5.0,
                     shape: RoundedRectangleBorder(
