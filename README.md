@@ -11,8 +11,8 @@ Problem statement ID: SS42
 <br>Domain: Healthcare & Biomedical Devices
 
 (1) [Complete Project Result Video](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/FINAL%20VIDEO.mp4) 
-(2) [Project Explanation & Working PPT](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/Final%20PPT.pptx)
-(3) [Architecture Explained](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/High%20Level%20Design%20Document.docx)
+<br>(2) [Project Explanation & Working PPT](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/Final%20PPT.pptx)
+<br>(3) [Architecture Explained](https://github.com/deliciafernandes/Response-Disaster-Management/blob/master/SIH_Files/High%20Level%20Design%20Document.docx)
 
 ### <a name="PS">2. Problem statement</a>
 Emergencies and disasters impact population's health. Public health plays a critical role in working with health and non-health sectors responsible for preparing for and responding to emergencies. In emergencies, large numbers of people may require medical attention. Health care systems may be over-stretched, and public order may be threatened. Hence, we want software solution such that social media can be used in public health emergency response. Such tool/page/plugin should have the below capabilities.
@@ -25,17 +25,14 @@ Emergencies and disasters impact population's health. Public health plays a crit
 ### <a name="FS">3. File Structure</a>
 
 (1) [Response App](https://github.com/deliciafernandes/Response-App/tree/master/ResponseApp)
-
-(2) [Response ML Related Files](https://github.com/deliciafernandes/Response-App/tree/master/ResponseML)
-
-(3) [Response Plugin](https://github.com/deliciafernandes/Response-App/tree/master/ResponsePlugin)
-
-(4) [Response Website](https://github.com/deliciafernandes/Response-App/tree/master/ResponseWebsite)
+<br>(2) [Response ML Related Files](https://github.com/deliciafernandes/Response-App/tree/master/ResponseML)
+<br>(3) [Response Plugin](https://github.com/deliciafernandes/Response-App/tree/master/ResponsePlugin)
+<br>(4) [Response Website](https://github.com/deliciafernandes/Response-App/tree/master/ResponseWebsite)
 
 ---
 ### **How to Contribute:**
 
-1. Clone repo and create a new branch: `$ git checkout git clone https://github.com/deliciafernandes/Response-App.git -b name_for_new_branch`.
+1. Clone repo and create a new branch: `$ git checkout https://github.com/SemAlpha/Response-Disaster-Management -b name_for_new_branch`.
 2. Make changes and test.
 3. Submit Pull Request with comprehensive description of changes.
 
