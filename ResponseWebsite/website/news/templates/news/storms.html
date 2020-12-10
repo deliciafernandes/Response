@@ -1,0 +1,127 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block content %}
+<section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-8">
+                                             <h3>Stay updated! Stay safe!</h3>
+                                            
+                                             <h1>Storms</h1>
+                                            
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>      
+
+
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h3>How to prepare for storms:</h3>
+                                   <h2>BEFORE A STORM: PREPARE</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3 style="font-weight: 100;"><ul>
+                                       <li>Stay Informed</li>
+                                       <li>Listen for emergency information and alerts.</li>
+                                       <li>If told to evacuate by local officials, do so immediately</li>
+                                   </ul></h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{%static 'images/precautions/storm_pre1.jpg'%} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>   
+     
+     
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h4>How to prepare for storms:</h4>
+                                   <h2>DURING A STORM: SURVIVE</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <h3 style="font-weight: 100;"> <ul>
+                                       <li>Determine how best to protect yourself from high winds and flooding.</li>
+                                       <li>Take refuge in a designated storm shelter, or an interior room for high winds.</li>
+                                       <li>If trapped in a building by flooding, go to the highest level of the building. Do not climb into a closed attic. You may become trapped by rising flood water.</li>
+                                       <li>Do not walk, swim, or drive through flood waters. Turn Around. Don’t Drown! Just six inches of fast-moving water can knock you down, and one foot of moving water can sweep your vehicle away.</li>  
+                                       <li>Stay off bridges over fast-moving water.</li>
+                                   </ul></h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{%static 'images/precautions/storm_pre2.jpg'%} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+
+    <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h4>How to prepare for storms:</h4>
+                                   <h2>AFTER A FLOOD: BE SAFE</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                  <h3 style="font-weight: 100;"><ul>
+                                       <li>Listen to local officials for information and special instructions.</li>
+                                       <li>Be careful during clean-up. Wear protective clothing and work with someone else.</li>
+                                       <li>Do not touch electrical equipment if it is wet or if you are standing in water. If it is safe to do so, turn off electricity at the main breaker or fuse box to prevent electric shock.</li>
+                                       <li>Avoid wading in flood water, which can contain dangerous debris. Underground or downed power lines can also electrically charge the water.</li>  
+                                       <li>Save phone calls for emergencies. Phone systems are often down or busy after a disaster. Use text messages or social media to communicate with family and friends.</li>
+                                       <li>Document any property damage with photographs. Contact your insurance company for assistance.</li>
+                                   </ul></h3>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src=" {% static 'images/precautions/storm_pre3.jpg' %} " class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+{% endblock content %}
