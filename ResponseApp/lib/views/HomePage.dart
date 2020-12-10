@@ -16,7 +16,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'HomePageDialogflow.dart';
 import 'MapsBody.dart';
 import 'NewsBody.dart';
-import 'OnboardingScreen.dart';
 import 'WhatToDoBody.dart';
 
 class HomePage extends StatefulWidget {

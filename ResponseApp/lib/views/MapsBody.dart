@@ -73,7 +73,7 @@ class _MapsBodyState extends State<MapsBody> {
 
   @override
   void initState() {
-    getLocationData();
+    // getLocationData();
 
     super.initState();
 

@@ -64,5 +64,8 @@ doc/api/
 /android/app/google-services.json
 /ios/Runner/GoogleService-Info.plist
 ios/Runner/GoogleService-Info.plist
-/ios/Runner/Info.plist
-ios/Runner/Info.plist
+#/ios/Runner/Info.plist
+#ios/Runner/Info.plist
+
+android/app/src/main/AndroidManifest.xml
+ios/Runner/AppDelegate.swift

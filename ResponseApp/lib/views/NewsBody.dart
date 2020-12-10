@@ -218,7 +218,6 @@ class _NewsBodyState extends State<NewsBody> {
                           return localNewsWidgets[i];
                         }),
                   );
-                  return Container();
                 },
               ),
       ],

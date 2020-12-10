@@ -78,6 +78,3 @@ TextStyle kDrawerItemTextStyle = TextStyle(
     fontWeight: FontWeight.bold,
     fontFamily: 'WorkSans',
     color: Colors.white);
-
-//var _width = MediaQuery.of(context).size.width;
-//var _height = MediaQuery.of(context).size.height;
