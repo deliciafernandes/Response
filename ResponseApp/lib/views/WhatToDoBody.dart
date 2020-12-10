@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:response/custom_widgets/CustomAppBar.dart';
-import 'package:response/custom_widgets/CustomPrecautionListTile.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:response/widgets/CustomAppBar.dart';
+import 'package:response/widgets/CustomPrecautionListTile.dart';
 
 class WhatToDoBody extends StatefulWidget {
   static const String id = '/WhatToDoBody';

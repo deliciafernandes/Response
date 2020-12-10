@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:response/custom_widgets/CustomAppBar.dart';
-import 'package:response/custom_widgets/CustomNewsTile.dart';
 import 'package:response/utilities/LocationService.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:response/widgets/CustomAppBar.dart';
+import 'package:response/widgets/CustomNewsTile.dart';
 
 class NewsBody extends StatefulWidget {
   static const String id = '/NewsBody';

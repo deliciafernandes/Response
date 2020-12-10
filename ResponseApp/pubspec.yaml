@@ -1,8 +1,6 @@
 name: response
 description: Flutter application for disaster management.
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
@@ -13,40 +11,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   flutter_localizations:
     sdk: flutter
 
+  #  UI specific:
   cupertino_icons: ^0.1.3
   introduction_screen: ^1.0.8
   drop_cap_text: ^1.0.7
-  validators: ^2.0.0
+  flutter_screenutil: ^2.3.1
 
+  #  Utilities
+  easy_localization: ^2.3.2
+  validators: ^2.0.0
   url_launcher: ^5.5.0
   share: '>=0.6.4+3 <2.0.0'
-  flutter_screenutil: ^2.3.1
   intl:
-
-  google_maps_flutter: ^0.5.28+1
-  flutter_google_places: ^0.2.6
-  easy_localization: ^2.3.2
-
   geolocator: ^5.3.2+2
   geocoder: ^0.2.1
 
-#  flutter_sms: ^2.0.1+2
-#  simple_animations: ^1.0.0
-
-#  modal_progress_hud: ^0.1.3
-#  giffy_dialog: ^1.7.0
-#  email_validator: ^1.0.0
-#  pin_code_fields: ^4.0.0
-
-  flutter_dialogflow: ^0.1.2
-
+  # Google Services:
   provider: ^4.3.1
   firebase_core: ^0.4.5
   cloud_firestore: ^0.13.7
   firebase_auth: ^0.16.1
+  flutter_dialogflow: ^0.1.2
+  google_maps_flutter: ^0.5.28+1
+  flutter_google_places: ^0.2.6
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +49,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/json/credentials.json
+#    - assets/json/credentials.json
 #    - language/en.json
 #    - language/hi.json
 #    - language/mr.json

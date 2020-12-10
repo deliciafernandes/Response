@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:response/custom_widgets/CustomSOSTile.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:response/widgets/CustomSOSTile.dart';
 
 class SOSselect extends StatelessWidget {
   static const String id = '/SOSselect';

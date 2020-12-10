@@ -59,8 +59,9 @@ class LocationService {
 
       return position.longitude;
     } catch (e) {
-      return 78.9629;
       print(e);
+
+      return 78.9629;
     }
   }
 }

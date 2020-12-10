@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:response/screens/DetailedNewsPage.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:response/views/DetailedNewsPage.dart';
 
 class CustomNewsTile extends StatefulWidget {
   final String date;

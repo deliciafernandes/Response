@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
-import 'package:response/custom_widgets/CustomAppBar.dart';
+import 'package:response/widgets/CustomAppBar.dart';
 
 class HomePageDialogflow extends StatefulWidget {
   HomePageDialogflow({Key key, this.title}) : super(key: key);
@@ -48,7 +48,7 @@ class _HomePageDialogflow extends State<HomePageDialogflow> {
     );
   }
 
-  void Response(query) async {
+  void response(query) async {
     _textController.clear();
     AuthGoogle authGoogle =
         await AuthGoogle(fileJson: "assets/json/credentials.json").build();
@@ -76,7 +76,7 @@ class _HomePageDialogflow extends State<HomePageDialogflow> {
     setState(() {
       _messages.insert(0, message);
     });
-    Response(text);
+    response(text);
   }
 
   @override
@@ -136,7 +136,7 @@ class ChatMessage extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            new Text(this.name, style: Theme.of(context).textTheme.subhead),
+            new Text(this.name, style: Theme.of(context).textTheme.subtitle1),
             new Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: new Text(text),

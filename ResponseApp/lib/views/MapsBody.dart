@@ -5,11 +5,11 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:response/custom_icons/emergency_icons.dart';
-import 'package:response/screens/SOS.dart';
 import 'package:response/utilities/LocationService.dart';
-import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:response/utilities/constants.dart';
+
+import 'SOS.dart';
 
 class MapsBody extends StatefulWidget {
   static const String id = '/MapsBody';

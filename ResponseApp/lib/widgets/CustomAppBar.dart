@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:response/custom_icons/emergency_icons.dart';
-import 'package:response/screens/SOS.dart';
 import 'package:response/utilities/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:response/views/SOS.dart';
 
 class CustomAppBar extends StatefulWidget {
   @override

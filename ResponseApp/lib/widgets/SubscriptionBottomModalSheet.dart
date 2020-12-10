@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:response/utilities/constants.dart';
-import 'package:validators/validators.dart' as validator;
 
 import 'ReusableTextField.dart';
 

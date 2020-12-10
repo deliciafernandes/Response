@@ -6,10 +6,9 @@ import 'package:response/custom_icons/maps_icons.dart';
 import 'package:response/custom_icons/news_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:response/custom_icons/share_icons.dart';
-import 'package:response/custom_widgets/SubscriptionBottomModalSheet.dart';
 import 'package:response/models/MenuItem.dart';
-import 'package:response/screens/OnboardingScreen.dart';
 import 'package:response/utilities/constants.dart';
+import 'package:response/widgets/SubscriptionBottomModalSheet.dart';
 
 import 'package:share/share.dart' as ShareFunction;
 import 'package:url_launcher/url_launcher.dart';
@@ -17,6 +16,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'HomePageDialogflow.dart';
 import 'MapsBody.dart';
 import 'NewsBody.dart';
+import 'OnboardingScreen.dart';
 import 'WhatToDoBody.dart';
 
 class HomePage extends StatefulWidget {
@@ -236,9 +236,9 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Idea.icons8_idea),
-              title: Text('What to do?',
-                  style: TextStyle(fontFamily: 'WorkSans'))),
+            icon: Icon(Idea.icons8_idea),
+            label: 'What to do?',
+          ),
           BottomNavigationBarItem(
               icon: Icon(News.icons8_news),
               title: Text('News', style: TextStyle(fontFamily: 'WorkSans'))),
@@ -253,27 +253,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-//appBar: AppBar(
-//automaticallyImplyLeading: false,
-//backgroundColor: Colors.white,
-//elevation: 0.0,
-//title: Text(
-//'RESPONSE',
-//style: kCustomAppBarResponseLogoTextStyle,
-//),
-//leading: IconButton(
-//icon: Icon(Icons.menu, size: 20.0.w, color: Colors.black),
-//onPressed: () {
-//_drawerController.open();
-//},
-//),
-//actions: [
-//IconButton(
-//icon: Icon(Emergency.warning, size: 20.0.w, color: Colors.black),
-//onPressed: () {
-//Navigator.pushNamed(context, SOS.id);
-//},
-//),
-//],
-//),

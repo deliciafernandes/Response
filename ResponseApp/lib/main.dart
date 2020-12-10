@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:response/Flood.dart';
-import 'package:response/screens/DetailedNewsPage.dart';
-import 'package:response/screens/MapsBody.dart';
-import 'package:response/screens/OnboardingScreen.dart';
 import 'package:flutter/services.dart';
-import 'package:response/screens/SOS.dart';
-import 'package:response/screens/SOSselect.dart';
-import 'package:response/screens/WhatToDoBody.dart';
-import 'package:response/test.dart';
-import 'screens/NewsBody.dart';
-import 'screens/HomePage.dart';
+
+import 'views/DetailedNewsPage.dart';
+import 'views/HomePage.dart';
+import 'views/MapsBody.dart';
+import 'views/NewsBody.dart';
+import 'views/OnboardingScreen.dart';
+import 'views/SOS.dart';
+import 'views/SOSselect.dart';
+import 'views/WhatToDoBody.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
