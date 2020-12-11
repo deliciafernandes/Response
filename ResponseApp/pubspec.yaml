@@ -29,7 +29,6 @@ dependencies:
   intl:
   geolocator: ^5.3.2+2
   geocoder: ^0.2.1
-#  permission_handler: ^5.0.1+1
 
   # Google Services:
   provider: ^4.3.1
