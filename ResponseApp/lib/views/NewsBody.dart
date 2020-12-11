@@ -167,7 +167,8 @@ class _NewsBodyState extends State<NewsBody> {
                         : news.data['location']);
 
                     String newsLocation = location.toUpperCase();
-                    if (userLocation.contains(newsLocation)) {
+
+                    if (!userLocation.contains(newsLocation)) {
                       //date conversion
                       DateTime myDateTime =
                           DateTime.parse(news.data['date'].toDate().toString());
@@ -179,7 +180,6 @@ class _NewsBodyState extends State<NewsBody> {
                       final String headline = news.data['headline'];
                       final String imageurl = news.data['imageurl'];
                       final String url = news.data['url'];
-
                       localNewsWidgets.add(CustomNewsTile(
                         date: date == null ? '' : date,
                         description: description.isEmpty
