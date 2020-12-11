@@ -69,3 +69,6 @@ ios/Runner/GoogleService-Info.plist
 
 android/app/src/main/AndroidManifest.xml
 ios/Runner/AppDelegate.swift
+
+# Dialog flow credentials file
+assets/json/credentials.json
