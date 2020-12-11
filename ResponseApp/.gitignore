@@ -61,14 +61,10 @@ doc/api/
 *.js.map
 *.json
 
+# Google Services Json Files ignored
 /android/app/google-services.json
 /ios/Runner/GoogleService-Info.plist
 ios/Runner/GoogleService-Info.plist
-#/ios/Runner/Info.plist
-#ios/Runner/Info.plist
 
-android/app/src/main/AndroidManifest.xml
-ios/Runner/AppDelegate.swift
-
-# Dialog flow credentials file
+# Dialog flow credentials file ignored
 assets/json/credentials.json
