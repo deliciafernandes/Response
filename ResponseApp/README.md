@@ -27,3 +27,58 @@ Icons:
 2. <a href="https://icons8.com/icon/74/idea">Idea icon by Icons8</a>
 3. <a href="https://icons8.com/icon/88625/news">News icon by Icons8</a>
 4. <a href="https://icons8.com/icon/43720/share">Share icon by Icons8</a>
+
+
+# Once cloned, do the following to make sure the app runs perfectly:
+
+### iOS:
+1. Make sure app has a Info.plist file in "ios/Runner/" folder having the following code for location permissions:
+	```
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Response App needs access to location when open.</string>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Response App needs access to location when in the background.</string>
+
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+   <string>Response App needs access to location when open and in the background</string>```
+
+3. Make sure app has a AppDelegate.swift  file in "ios/Runner/" folder having the Google API key for Google Maps SDK.
+4. This is a no brainer, "ios/Runner/GoogleService-Info.plist".
+
+### Android:
+1. This is a no brainer again, "android/app/google-services.json"
+2. Make sure app has a local.properties file, if not:
+	* Go to your  `Project -> Android`
+	* Create a file  `local.properties` file
+	* Open the file and Paste your Android SDK path depending on the operating system:
+		a. Windows
+			`sdk.dir = C:/Users/USERNAME/AppData/Local/Android/sdk`
+
+		b. Linux or MacOS
+			`sdk.dir = /home/USERNAME/Android/sdk`
+
+		Replace  `USERNAME`  with your user name
+
+3. Next, [Adding Google Maps API key to Android App carefully!](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
+
+### Chatbot:
+1. Download a JSON file from the [google cloud console](https://console.cloud.google.com/) which helps your App to connect to the Chatbot Dialog flow Agent.
+	* Incase you have no clue as to what is to be done, follow [How to add a ChatBot in Flutter using DialogFlow!](https://medium.com/flutterdevs/chatbot-in-flutter-using-dialogflow-70e28665a827)
+2. Once downloaded, rename file to "credentials.json"
+3. Place the credentials.json file in the "assets/json/" folder
+
+## Run this in the terminal:
+- flutter clean
+- flutter doctor
+- flutter pub get
+
+**iOS Specific, `cd ios`**
+- pod repo update
+- pod update
+- sudo gem install cocoapods
+- pod setup
+
+- flutter run
