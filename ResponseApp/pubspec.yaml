@@ -37,7 +37,7 @@ dependencies:
   firebase_auth: ^0.16.1
   flutter_dialogflow: ^0.1.2
 
-  google_maps_flutter: ^1.0.3
+  google_maps_flutter: ^1.0.6
 
 dev_dependencies:
   flutter_test:
