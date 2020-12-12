@@ -50,7 +50,7 @@ Icons:
 
 ### Android:
 1. This is a no brainer again, "android/app/google-services.json"
-2. Make sure app has a local.properties file, if not:
+2. Make sure app has a local.properties file in the `Project -> Android`, if not:
 	* Go to your  `Project -> Android`
 	* Create a file  `local.properties` file
 	* Open the file and Paste your Android SDK path depending on the operating system:
