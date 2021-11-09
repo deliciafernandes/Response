@@ -36,7 +36,7 @@ Emergencies and disasters impact population's health. Public health plays a crit
 2. Make changes and test.
 3. Submit Pull Request with comprehensive description of changes.
 
-**Acknowledgements**
+<!-- **Acknowledgements**
 ---
 <table>
 <td align="center">
@@ -76,4 +76,4 @@ Manmohan Dogra Image"/><br>
 
 <p align="center">
 <b><a href="https://github.com/SemAlpha">Team SEM_ALPHA</a></b>
-</p>
+</p> -->
