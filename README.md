@@ -1,4 +1,4 @@
-# Team SEM_ALPHA for SIH 2020 Finals
+# Response
 
 ### Table of Contents
 1. <a href="#SIH">SIH Related Details</a>
